@@ -7,7 +7,14 @@ module.exports = {
         './nuxt.config.{js,ts}',
     ],
     theme: {
-        extend: {},
+        extend: {
+            height: {
+                22: '5.5rem',
+            },
+            boxShadow: {
+                inner: 'inset 0px -1.5px 1.5px 0px hsla(0, 0%, 0%, 0.04), 0px 1.5px 1.5px 0px hsla(0, 0%, 100%, 0.04)',
+            },
+        },
     },
     plugins: [],
 }

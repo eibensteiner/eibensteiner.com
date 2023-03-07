@@ -14,9 +14,6 @@
 </template>
 
 <script setup>
-definePageMeta({
-    layout: 'landing',
-})
 const router = useRouter()
 const goBack = () => {
     router.go(-1)
