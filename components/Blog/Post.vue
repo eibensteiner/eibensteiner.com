@@ -2,21 +2,17 @@
     <section class="mt-1 mb-6">
         <!-- TYTUŁ -->
         <div>
-            <img
-                v-if="header.cover"
-                class="w-full h-64 object-cover rounded-box mt-2 mb-4"
-                :src="header.cover[header.cover.type].url"
-                alt="zdjęcie posta"
-            />
+            <img v-if="header.cover"
+                 class="w-full h-64 object-cover rounded-box mt-2 mb-4"
+                 :src="header.cover[header.cover.type].url"
+                 alt="zdjęcie posta" />
             <div v-else></div>
         </div>
 
         <div class="prose mb-6">
-            <h1
-                v-for="title in header.properties.Title[
-                    header.properties.Title.type
-                ]"
-            >
+            <h1 v-for="title in header.properties.Title[
+                header.properties.Title.type
+            ]">
                 {{ title.plain_text }}
             </h1>
         </div>
@@ -24,10 +20,8 @@
 
         <!-- Autor, Data publikacji, W ile do przeczytania? -->
         <div class="flex items-center gap-2 text-sm mb-6">
-            <div
-                class="flex items-center gap-2"
-                v-for="author in header.properties.Author.people"
-            >
+            <div class="flex items-center gap-2"
+                 v-for="author in header.properties.Author.people">
                 <div class="avatar">
                     <div class="w-6 rounded">
                         <img :src="author.avatar_url" />

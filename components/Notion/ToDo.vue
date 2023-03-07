@@ -8,11 +8,9 @@ const props = defineProps(['block'])
             <span class="label-text">
                 <NotionRichText :richText="block[block.type].rich_text" />
             </span>
-            <input
-                type="checkbox"
-                v-model="block[block.type].checked"
-                class="checkbox"
-            />
+            <input type="checkbox"
+                   v-model="block[block.type].checked"
+                   class="checkbox" />
         </label>
     </div>
 </template>

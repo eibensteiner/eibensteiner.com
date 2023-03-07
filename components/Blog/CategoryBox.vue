@@ -2,32 +2,28 @@
     <div>
         <h2 class="text-md font-normal my-2">Categories</h2>
         <div class="flex flex-row flex-wrap gap-1">
-            <button
-                v-if="!pending"
-                v-for="category in categories.properties.Category.multi_select
-                    .options"
-                class="btn btn-xs"
-                :class="{ 'btn-primary': selectedCategories.has(category.id) }"
-                @click="selectCategory(category.id)"
-            >
+            <button v-if="!pending"
+                    v-for="category in categories.properties.Category.multi_select
+                        .options"
+                    class="btn btn-xs"
+                    :class="{ 'btn-primary': selectedCategories.has(category.id) }"
+                    @click="selectCategory(category.id)">
                 {{ category.name }}
             </button>
-            <span
-                data-placeholder
-                v-else
-                v-for="categoryPlaceholder in [
-                    'w-12',
-                    'w-32',
-                    'w-48',
-                    'w-16',
-                    'w-24',
-                    'w-48',
-                    'w-48',
-                    'w-12',
-                ]"
-                :class="categoryPlaceholder"
-                class="btn btn-xs btn-outline overflow-hidden relative"
-            ></span>
+            <span data-placeholder
+                  v-else
+                  v-for="categoryPlaceholder in [
+                      'w-12',
+                      'w-32',
+                      'w-48',
+                      'w-16',
+                      'w-24',
+                      'w-48',
+                      'w-48',
+                      'w-12',
+                  ]"
+                  :class="categoryPlaceholder"
+                  class="btn btn-xs btn-outline overflow-hidden relative"></span>
         </div>
     </div>
 </template>

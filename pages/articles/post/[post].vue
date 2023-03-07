@@ -2,30 +2,30 @@
     <div>
         <div class="text-sm breadcrumbs">
             <ul>
-                <li><NuxtLink to="/">Main page</NuxtLink></li>
-                <li><NuxtLink to="/articles">Articles</NuxtLink></li>
+                <li>
+                    <NuxtLink to="/">Main page</NuxtLink>
+                </li>
+                <li>
+                    <NuxtLink to="/articles">Articles</NuxtLink>
+                </li>
                 <li v-if="!pendingHeader">
                     {{ header.properties.Title.title[0].text.content }}
                 </li>
             </ul>
         </div>
-        <BlogPost
-            v-if="
-                !pendingHeader &&
-                !pendingContent &&
-                !errorHeader &&
-                !errorContent
-            "
-            :header="header"
-            :content="content"
-        />
-        <div
-            v-else-if="
-                (errorHeader || errorContent) &&
-                !pendingHeader &&
-                !pendingContent
-            "
-        >
+        <BlogPost v-if="
+            !pendingHeader &&
+            !pendingContent &&
+            !errorHeader &&
+            !errorContent
+        "
+                  :header="header"
+                  :content="content" />
+        <div v-else-if="
+            (errorHeader || errorContent) &&
+            !pendingHeader &&
+            !pendingContent
+        ">
             <div class="hero bg-base-100">
                 <div class="hero-content text-center">
                     <div class="">
@@ -33,7 +33,8 @@
                             Oops! This article doesn't exist or has been
                             deleted.
                         </p>
-                        <button class="btn btn-neutral btn-sm" @click="goBack">
+                        <button class="btn btn-neutral btn-sm"
+                                @click="goBack">
                             &lArr; Go back
                         </button>
                     </div>

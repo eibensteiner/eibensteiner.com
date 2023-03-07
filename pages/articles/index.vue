@@ -2,8 +2,12 @@
     <div class="max-w-full mx-0">
         <div class="text-sm breadcrumbs">
             <ul>
-                <li><NuxtLink to="/">Main page</NuxtLink></li>
-                <li><NuxtLink to="/articles">Articles</NuxtLink></li>
+                <li>
+                    <NuxtLink to="/">Main page</NuxtLink>
+                </li>
+                <li>
+                    <NuxtLink to="/articles">Articles</NuxtLink>
+                </li>
             </ul>
         </div>
 
@@ -13,34 +17,24 @@
             </aside>
             <div class="divide-y flex-1 divide-base-200">
                 <!-- Display filtered posts -->
-                <BlogPostSmall
-                    v-if="selectedCategories.size != 0"
-                    v-for="post in filteredPosts"
-                    :post="post"
-                />
+                <BlogPostSmall v-if="selectedCategories.size != 0"
+                               v-for="post in filteredPosts"
+                               :post="post" />
                 <!-- Display posts from last API call -->
-                <BlogPostSmall
-                    v-if="selectedCategories.size == 0"
-                    v-for="post in postsToRemain"
-                    :post="post"
-                />
+                <BlogPostSmall v-if="selectedCategories.size == 0"
+                               v-for="post in postsToRemain"
+                               :post="post" />
                 <!-- Display posts from current API call -->
-                <BlogPostSmall
-                    v-if="!pending && selectedCategories.size == 0"
-                    v-for="post in postsFromNotion.results"
-                    :post="post"
-                />
+                <BlogPostSmall v-if="!pending && selectedCategories.size == 0"
+                               v-for="post in postsFromNotion.results"
+                               :post="post" />
                 <!-- Post placeholder -->
-                <BlogPostSmallPlaceholder
-                    v-else-if="pending"
-                    v-for="el in [1, 2, 3]"
-                />
-                <button
-                    class="btn btn-block btn-primary"
-                    :class="{ loading: pending }"
-                    @click="loadMore"
-                    :disabled="pending || !postsFromNotion.has_more"
-                >
+                <BlogPostSmallPlaceholder v-else-if="pending"
+                                          v-for="el in [1, 2, 3]" />
+                <button class="btn btn-block btn-primary"
+                        :class="{ loading: pending }"
+                        @click="loadMore"
+                        :disabled="pending || !postsFromNotion.has_more">
                     <span>Load more</span>
                 </button>
             </div>
@@ -66,7 +60,7 @@ const {
 } = useLazyAsyncData('postsFromNotion', () =>
     $fetch(`/api/notion/query-database?cursor=${cursor.value}`)
 )
-watch(postsFromNotion, (postsFromNotionW) => {})
+watch(postsFromNotion, (postsFromNotionW) => { })
 
 // Load more articles (button push)
 const loadMore = () => {

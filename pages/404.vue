@@ -4,7 +4,8 @@
             <div class="">
                 <h1 class="text-7xl font-bold">404</h1>
                 <p class="py-6">Oops! This page doesn't exist.</p>
-                <button class="btn btn-neutral btn-sm" @click="goBack">
+                <button class="btn btn-neutral btn-sm"
+                        @click="goBack">
                     &lArr; Go back
                 </button>
             </div>

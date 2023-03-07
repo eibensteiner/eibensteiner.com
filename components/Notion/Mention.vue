@@ -1,6 +1,7 @@
 <template>
     <!-- Użytkownik -->
-    <span v-if="mention[mention.type].type == 'user'" class="text-secondary">
+    <span v-if="mention[mention.type].type == 'user'"
+          class="text-secondary">
         @{{ mention[mention.type].user.name }}
     </span>
 
@@ -13,9 +14,7 @@
 
     <!-- Strona -->
     <span v-if="mention[mention.type].type == 'page'">
-        <NuxtLink :to="mention.mention.page.id"
-            >{{ mention.plain_text }} &neArr;</NuxtLink
-        >
+        <NuxtLink :to="mention.mention.page.id">{{ mention.plain_text }} &neArr;</NuxtLink>
     </span>
 </template>
 
