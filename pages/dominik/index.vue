@@ -1,5 +1,6 @@
 <template>
     <div class="max-w-full">
+        <Header class="mb-5"></Header>
         <div>
             <!--<aside class="lg:max-w-sm w-full">
                 <BlogCategoryBox :selectedCategories="selectedCategories" />
@@ -8,24 +9,24 @@
                 <!-- Display filtered posts -->
                 <BlogPostSmall v-if="selectedCategories.size != 0"
                                v-for="post in filteredPosts"
-                               :post="post" />
+                               :post="post" :user="user"/>
                 <!-- Display posts from last API call -->
                 <BlogPostSmall v-if="selectedCategories.size == 0"
                                v-for="post in postsToRemain"
-                               :post="post" />
+                               :post="post" :user="user"/>
                 <!-- Display posts from current API call -->
                 <BlogPostSmall v-if="!pending && selectedCategories.size == 0"
                                v-for="post in postsFromNotion.results"
-                               :post="post" />
+                               :post="post" :user="user"/>
                 <!-- Post placeholder -->
                 <BlogPostSmallPlaceholder v-else-if="pending"
                                           v-for="el in [1, 2, 3]" />
-                <button class="btn btn-block btn-primary"
+                <!--<button class="btn btn-block btn-primary"
                         :class="{ loading: pending }"
                         @click="loadMore"
                         :disabled="pending || !postsFromNotion.has_more">
                     <span>Load more</span>
-                </button>
+                </button>-->
             </div>
         </div>
     </div>
@@ -37,6 +38,8 @@ import { postsToRemain } from '~/store/articles.js'
 
 // API Cursor for getting next articles
 const cursor = ref(undefined)
+
+const user = 'dominik';
 
 // Filter by category
 const selectedCategories = ref(new Set())
