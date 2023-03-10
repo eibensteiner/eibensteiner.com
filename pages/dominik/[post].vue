@@ -98,6 +98,7 @@ const {
 const goBack = () => {
     router.go(-1)
 }
+
 refreshHeader()
 refreshContent()
 </script>

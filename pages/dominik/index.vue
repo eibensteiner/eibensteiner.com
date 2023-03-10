@@ -1,17 +1,14 @@
 <template>
     <div class="max-w-full">
-        <Header class="mb-5" :user="filteredPosts[0].properties.Author.people[0]"></Header>
-        <pre>{{ filteredPosts[0].properties.Author.people[0] }}</pre>
-        <div>
-            <div class="flex flex-col gap-4">
-                <BlogPostSmall v-if="!pending"
-                               v-for="post in filteredPosts"
-                               :post="post"
-                               :user="user" />
-                <!-- Post placeholder -->
-                <BlogPostSmallPlaceholder v-else-if="pending"
-                                          v-for="el in [1, 2, 3]" />
-            </div>
+        <Header class="mb-5"
+                :user="filteredPosts[0].properties.Author.people[0]"></Header>
+        <div class="flex flex-col gap-4">
+            <BlogPostSmall v-if="!pending"
+                           v-for="post in filteredPosts"
+                           :post="post"
+                           :user="user" />
+            <BlogPostSmallPlaceholder v-else
+                                      v-for="el in [1, 2, 3]" />
         </div>
     </div>
 </template>

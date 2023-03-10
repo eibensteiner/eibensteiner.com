@@ -1,96 +1,39 @@
 <template>
     <div class="max-w-full">
-        <div>
-            <!--<aside class="lg:max-w-sm w-full">
-                <BlogCategoryBox :selectedCategories="selectedCategories" />
-            </aside>-->
-            <div class="flex flex-col gap-4">
-                <!-- Display filtered posts -->
-                <BlogPostSmall v-if="selectedCategories.size != 0"
-                               v-for="post in filteredPosts"
-                               :post="post" />
-                <!-- Display posts from last API call -->
-                <BlogPostSmall v-if="selectedCategories.size == 0"
-                               v-for="post in postsToRemain"
-                               :post="post" />
-                <!-- Display posts from current API call -->
-                <BlogPostSmall v-if="!pending && selectedCategories.size == 0"
-                               v-for="post in postsFromNotion.results"
-                               :post="post" />
-                <!-- Post placeholder -->
-                <BlogPostSmallPlaceholder v-else-if="pending"
-                                          v-for="el in [1, 2, 3]" />
-                <button class="btn btn-block btn-primary"
-                        :class="{ loading: pending }"
-                        @click="loadMore"
-                        :disabled="pending || !postsFromNotion.has_more">
-                    <span>Load more</span>
-                </button>
-            </div>
+        <Header class="mb-5"
+                :user="filteredPosts[0].properties.Author.people[0]"></Header>
+        <div class="flex flex-col gap-4">
+            <BlogPostSmall v-if="!pending"
+                           v-for="post in filteredPosts"
+                           :post="post"
+                           :user="user" />
+            <BlogPostSmallPlaceholder v-else
+                                      v-for="el in [1, 2, 3]" />
         </div>
     </div>
 </template>
 
 <script setup>
-// Articles save to storage so during routing you dont lose articles from last API calls
-import { postsToRemain } from '~/store/articles.js'
 
 // API Cursor for getting next articles
 const cursor = ref(undefined)
+const user = 'sarah';
 
-// Filter by category
-const selectedCategories = ref(new Set())
-
-// Async fetching
+// Fetch all the posts from Notion (Async)
 const {
     pending,
     data: postsFromNotion,
-    refresh,
 } = useLazyAsyncData('postsFromNotion', () =>
     $fetch(`/api/notion/query-database?cursor=${cursor.value}`)
 )
-watch(postsFromNotion, (postsFromNotionW) => { })
 
-// Load more articles (button push)
-const loadMore = () => {
-    postsToRemain.value = [
-        ...postsToRemain.value,
-        ...postsFromNotion.value.results,
-    ]
-    cursor.value = postsFromNotion.value.next_cursor
-    refresh()
-}
-
-// Filtered posts triggered by category select
+// Go through all the posts and filter out the posts with a specific author.
 const filteredPosts = computed(() => {
     // Get all posts currently loaded
-    let posts = [...postsToRemain.value, ...postsFromNotion.value.results]
+    let posts = [...postsFromNotion.value.results];
 
-    // Difference method
-    Array.prototype.diff = function (arr2) {
-        return this.filter((x) => !arr2.includes(x))
-    }
-
-    // Unload selected ids of categories from SET to an ARRAY
-    const selectedCategoriesArray = [...selectedCategories.value.values()]
-
-    // Filtering magic
-    posts = posts.filter((post) => {
-        // Get only the ids so we can compare them later
-        let postCategories = post.properties.Category[
-            post.properties.Category.type
-        ].map(({ id }) => id)
-        // Get the intersection from A and B
-        let intersection = selectedCategoriesArray.filter((x) =>
-            postCategories.includes(x)
-        )
-        // Compare to the original selected categories
-        return selectedCategoriesArray.diff(intersection).length == 0
-            ? true
-            : false
-    })
-
-    // Return posts
-    return posts
+    return posts = posts.filter((post) => {
+        return post.properties.Author.people[0].name === user.charAt(0).toUpperCase() + user.slice(1) + ' Eibensteiner';
+    });
 })
 </script>
