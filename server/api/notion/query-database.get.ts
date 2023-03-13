@@ -22,7 +22,6 @@ export default defineEventHandler((event) => {
                 direction: 'descending',
             },
         ],
-        page_size: 3,
         start_cursor:
             query.cursor != 'undefined' ? query.cursor.toString() : undefined,
     })
