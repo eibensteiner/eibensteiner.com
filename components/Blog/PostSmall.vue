@@ -1,14 +1,9 @@
 <template>
     <NuxtLink class="relative rounded-2xl overflow-hidden bg-white hover:bg-gray-50 hover:bg-opacity-50 transition shadow-inner"
               :to="post.properties.Type.select.name == 'Writing' ? `/${user}/${post.id}` : post.properties.Link.url">
-        <div class="w-full h-full  ">
-            <div v-if="post.cover">
-                <div class="relative w-full h-72">
-                    <img class="w-full h-full object-cover"
-                         :src="post.cover[post.cover.type].url" />
-                    <div class="absolute left-0 top-0 right-0 bottom-0 border-b border-black border-opacity-5"></div>
-                </div>
-            </div>
+        <div class="w-full h-full">
+            
+            <Preview v-if="post.cover" :post="post"></Preview>
 
             <div class="flex justify-between items-center p-5 h-22">
                 <div class="flex flex-col">
@@ -26,7 +21,8 @@
                 </div>
                 <div v-if="post.properties.Type.select.name != 'Writing'"
                      class="flex items-center justify-center w-12 h-12 border shadow-inner rounded-lg bg-gradient-to-b from-white to-gray-50">
-                    <span v-if="post.icon" class="text-lg">{{ post.icon.emoji }}</span>
+                    <span v-if="post.icon"
+                          class="text-lg">{{ post.icon.emoji }}</span>
                     <IconArrowUpRight v-else />
                 </div>
             </div>

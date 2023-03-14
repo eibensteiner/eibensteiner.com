@@ -5,3 +5,11 @@
 * {
     @apply antialiased;
 }
+
+.c-border-transparent {
+    @apply relative overflow-hidden after:border after:border-black after:border-opacity-5 after:absolute after:left-0 after:top-0 after:right-0 after:bottom-0 after:rounded-inherit;
+}
+
+.c-border-b-transparent {
+    @apply relative overflow-hidden after:border-b after:border-black after:border-opacity-5 after:absolute after:left-0 after:top-0 after:right-0 after:bottom-0 after:rounded-inherit;
+}
