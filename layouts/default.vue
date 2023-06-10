@@ -1,7 +1,5 @@
 <template>
-    <div class="p-28 relative">
-        <NuxtPage class="max-w-md mx-auto p-4 xl:p-0" />
-    </div>
+    <NuxtPage />
 </template>
 
 <style>

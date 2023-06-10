@@ -1,6 +1,8 @@
 <template>
-    <div class="max-w-full">
-        <Header class="mb-5"
+    <div class="border-l border-r mx-auto max-w-xl w-full relative min-h-screen">
+        <Navigation></Navigation>
+        <main>
+            <Header class="mb-5"
                 :user="filteredPosts[0].properties.Author.people[0]"></Header>
         <div class="flex flex-col gap-4">
             <BlogPostSmall v-if="!pending"
@@ -10,6 +12,7 @@
             <BlogPostSmallPlaceholder v-else
                                       v-for="el in [1, 2, 3]" />
         </div>
+        </main>
     </div>
 </template>
 

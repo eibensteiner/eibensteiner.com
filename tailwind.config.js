@@ -9,6 +9,7 @@ module.exports = {
     theme: {
         extend: {
             height: {
+                21: '5.25rem',
                 22: '5.5rem',
             },
             boxShadow: {
