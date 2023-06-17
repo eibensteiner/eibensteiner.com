@@ -4,7 +4,7 @@
             <div data-placeholder
                  class="w-full h-24 overflow-hidden relative dark:bg-[#1b2126] bg-base-200 rounded-box"></div>
         </div>
-        <div class="col-span-5 flex items-center gap-2 text-sm">
+        <div class="col-span-5 flex items-center gap-2 ">
             <div class="avatar">
                 <div data-placeholder
                      class="w-6 h-6 rounded dark:bg-[#1b2126] bg-base-200 overflow-hidden relative"></div>

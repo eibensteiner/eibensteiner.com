@@ -20,7 +20,7 @@
                 <img :src="block.image[block.image.type].url"
                      class="mb-0" />
                 <div v-if="block.image.caption"
-                     class="text-md font-normal text-center mt-1">
+                     class=" font-normal text-center mt-1">
                     <NotionRichText :richText="block.image.caption" />
                 </div>
             </label>

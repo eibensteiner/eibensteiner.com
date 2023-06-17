@@ -1,30 +1,22 @@
 <template>
-    <NuxtLink class="w-full p-6 overflow-hidden bg-white border-b"
+    <NuxtLink class="w-full p-6 overflow-hidden bg-white border-b border-gray-100"
         :to="post.properties.Type.select.name == 'Writing' ? `/${user}/${post.id}` : post.properties.Link.url">
-        <div class="w-full h-full">
+        <div class="flex items-start">
+            <div
+                class="flex items-center justify-center w-9 h-9 border shadow-inner rounded-lg bg-gradient-to-b from-white to-gray-50 mr-4">
+                <span v-if="post.icon">{{ post.icon.emoji }}</span>
+            </div>
+            <div class="flex flex-col flex-1">
+                <span class="leading-6 mb-0.5">
+                    <span class="font-medium">{{ post.properties.Title.title[0].plain_text }}</span>
+                    <span class="ml-2 font-regular leading-6 text-gray-400">{{ publishedAtReadable }}</span>
+                </span>
+                <span class="font-regular leading-6 text-gray-600">{{ post.properties.Description.rich_text[0].plain_text
+                }}</span>
 
-            <!--<Preview v-if="post.cover" :post="post"></Preview>-->
-
-            <div class="flex items-start">
-                <div
-                    class="flex items-center justify-center w-8 h-8 border shadow-inner rounded-lg bg-gradient-to-b from-white to-gray-50 mr-4">
-                    <span v-if="post.icon" class="text-md">{{ post.icon.emoji }}</span>
-                </div>
-                <div class="flex flex-col">
-                    <span class="font-medium text-sm leading-6">
-                        {{ post.properties.Title.title[0].plain_text }}
-                    </span>
-                    <span class="font-medium text-sm leading-6">
-                        {{ publishedAtReadable }}
-                    </span>
-                    <span class="font-regular text-sm leading-6 text-gray-600">
-                        Read More
-                    </span>
-                </div>
+                <img v-if="post.properties.Images.files.length != 0" :src="post.properties.Images.files[0].file.url" class="rounded-lg mt-4"/>
             </div>
         </div>
-
-        <pre>{{ post.properties }}</pre>
     </NuxtLink>
 </template>
 

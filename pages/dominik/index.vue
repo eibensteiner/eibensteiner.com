@@ -1,5 +1,5 @@
 <template>
-    <div class="border-l border-r mx-auto max-w-xl w-full relative min-h-screen">
+    <div class="border-l border-r border-gray-100 mx-auto max-w-xl w-full relative min-h-screen">
         <Navigation></Navigation>
         <main>
             <Header

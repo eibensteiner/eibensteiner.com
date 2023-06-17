@@ -19,7 +19,7 @@
         <!-- TYTUŁ -->
 
         <!-- Autor, Data publikacji, W ile do przeczytania? -->
-        <div class="flex items-center gap-2 text-sm mb-6">
+        <div class="flex items-center gap-2  mb-6">
             <div class="flex items-center gap-2"
                  v-for="author in header.properties.Author.people">
                 <div class="avatar">

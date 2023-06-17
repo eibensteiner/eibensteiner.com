@@ -1,6 +1,6 @@
 <template>
     <div>
-        <!--<div class="text-sm breadcrumbs">
+        <!--<div class=" breadcrumbs">
             <ul>
                 <li>
                     <NuxtLink to="/">Main page</NuxtLink>
@@ -21,10 +21,10 @@
                  @click="goBack">
                 <div class="flex justify-between items-center p-5">
                     <div class="flex flex-col">
-                        <span class="font-medium text-sm leading-6">
+                        <span class="font-medium  leading-6">
                             Dominik
                         </span>
-                        <span class="font-regular text-sm leading-6 text-gray-600">
+                        <span class="font-regular  leading-6 text-gray-600">
                             Go Back
                         </span>
                     </div>

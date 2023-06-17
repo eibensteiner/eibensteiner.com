@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="text-sm breadcrumbs">
+        <div class=" breadcrumbs">
             <ul>
                 <li>
                     <NuxtLink to="/">Main page</NuxtLink>

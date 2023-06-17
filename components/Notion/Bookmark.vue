@@ -13,9 +13,9 @@
             <div>
                 <NotionRichText :richText="block[block.type].caption" />
             </div>
-            <div class="text-sm"
+            <div class=""
                  :class="{
-                     'text-sm': block[block.type].caption.length != 0,
+                     '': block[block.type].caption.length != 0,
                  }">
                 {{ block[block.type].url }}
             </div>
