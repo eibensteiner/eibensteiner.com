@@ -1,5 +1,5 @@
 <template>
-    <header class="flex items-center flex-1 p-5">
+    <header class="flex items-center flex-1 p-5 border-b">
         <div class="w-12 h-12 mr-5 rounded-full c-border-transparent">
             <img class="w-full h-full object-cover"
                  :src="user.avatar_url" />

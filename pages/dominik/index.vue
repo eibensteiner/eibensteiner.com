@@ -2,9 +2,9 @@
     <div class="border-l border-r mx-auto max-w-xl w-full relative min-h-screen">
         <Navigation></Navigation>
         <main>
-            <Header class="mb-5"
+            <Header
                 :user="filteredPosts[0].properties.Author.people[0]"></Header>
-        <div class="flex flex-col gap-4">
+        <div class="flex flex-col">
             <BlogPostSmall v-if="!pending"
                            v-for="post in filteredPosts"
                            :post="post"
