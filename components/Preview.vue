@@ -1,6 +1,6 @@
 <template>
     <div class="w-full h-64 flex items-center justify-center c-border-b-transparent bg-gradient-to-b from-white to-gray-50">
-        <div class="flex flex-col bg-white border shadow-inner rounded-xl w-28 h-36 p-3">
+        <div class="flex flex-col bg-white border rounded-xl w-28 h-36 p-3">
             <div class="w-full h-16 rounded-md c-border-transparent">
                 <img class="w-full h-full object-cover"
                      :src="post.cover[post.cover.type].url" />

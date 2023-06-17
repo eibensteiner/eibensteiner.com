@@ -2,16 +2,13 @@
     <div class="border-l border-r border-gray-100 mx-auto max-w-xl w-full relative min-h-screen">
         <Navigation></Navigation>
         <main>
-            <Header
-                :user="filteredPosts[0].properties.Author.people[0]"></Header>
-        <div class="flex flex-col">
-            <BlogPostSmall v-if="!pending"
-                           v-for="post in filteredPosts"
-                           :post="post"
-                           :user="user" />
-            <BlogPostSmallPlaceholder v-else
-                                      v-for="el in [1, 2, 3]" />
-        </div>
+            <Header :name="'Dominik EIbensteiner'" :description="'Product Designer from Austria'"
+                :email="'dominik.eibensteiner@outlook.com'"
+                :avatar="filteredPosts[0].properties.Author.people[0].avatar_url"></Header>
+            <div class="flex flex-col">
+                <BlogPostSmall v-if="!pending" v-for="post in filteredPosts" :post="post" :user="user" />
+                <BlogPostSmallPlaceholder v-else v-for="el in [1, 2, 3]" />
+            </div>
         </main>
     </div>
 </template>
