@@ -1,14 +1,14 @@
 <template>
-    <button :class="[type, isIconOnly ? 'icon-only' : '']">{{ label }}</button>
+    <button class="whitespace-nowrap rounded-full shadow-sm select-none" :class="[type, isIconOnly ? 'icon-only' : '']">{{ label }}</button>
 </template>
 
 <style>
 .primary {
-    @apply h-11 whitespace-nowrap px-6 rounded-full bg-gray-900 text-white shadow-sm;
+    @apply h-11 px-6 bg-gray-900 text-white;
 }
 
 .secondary {
-    @apply h-11 whitespace-nowrap px-6 rounded-full outline outline-1 outline-gray-200 shadow-sm hover:bg-gray-50 transition-colors;
+    @apply h-11 px-6 outline outline-1 outline-gray-200 hover:bg-gray-50 transition-colors;
 }
 
 .icon-only {

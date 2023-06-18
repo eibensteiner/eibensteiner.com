@@ -4,22 +4,26 @@
         <div class="flex items-start">
             <div
                 class="flex items-center justify-center w-9 h-9 outline outline-1 outline-gray-200 shadow-sm rounded-lg bg-gray-50 mr-4">
-                <span v-if="post.icon">{{ post.icon.emoji }}</span>
+                <span v-if="post.icon" class="select-none">{{ post.icon.emoji }}</span>
             </div>
             <div class="flex flex-col flex-1">
                 <span class="leading-6 mb-0.5">
                     <template v-for="title in post.properties.Title.title">
                         <span>{{ title.plain_text }}</span>
                     </template>
-                    <Tooltip :text="post.properties.Date.date.start">
+                    <Tooltip :text="readableDate">
                         <span class="ml-1.5 leading-6 text-gray-400">{{ publishedAtReadable }}</span>
                     </Tooltip>
                 </span>
-                <span class="font-regular leading-6 text-gray-600">{{ post.properties.Description.rich_text[0].plain_text
-                }}</span>
+
+                <span class="font-regular leading-6 text-gray-600">
+                    <template v-for="subtitle in post.properties.Description.rich_text">
+                        <span>{{ subtitle.plain_text }}</span>
+                    </template>
+                </span>
 
                 <div v-if="post.properties.Images.files.length != 0" class="mt-4 rounded-lg c-border-transparent">
-                    <img class="w-full h-full object-cover" :src="post.properties.Images.files[0].file.url" />
+                    <img class="w-full h-full object-cover bg-gray-50" loading="lazy" :src="post.properties.Images.files[0].file.url" />
                 </div>
             </div>
         </div>
@@ -48,5 +52,14 @@ const publishedAtReadable = computed(() => {
         // More than a year has passed:
         return `${Math.floor(diff / 31536000)}y`;
     }
+})
+
+const readableDate = computed(() => {
+    if (props.post.properties.Date[props.post.properties.Date.type]) {
+        let date = new Date(
+            props.post.properties.Date[props.post.properties.Date.type].start
+        )
+        return date.toLocaleString('en-US', {dateStyle: 'medium'})
+    } else return '?'
 })
 </script>
