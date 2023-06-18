@@ -1,20 +1,26 @@
 <template>
-    <NuxtLink class="w-full p-6 overflow-hidden bg-white border-b border-gray-100"
+    <NuxtLink class="w-full p-6 bg-white border-b border-gray-100"
         :to="post.properties.Type.select.name == 'Writing' ? `/${user}/${post.id}` : post.properties.Link.url">
         <div class="flex items-start">
             <div
-                class="flex items-center justify-center w-9 h-9 border shadow-inner rounded-lg bg-gradient-to-b from-white to-gray-50 mr-4">
+                class="flex items-center justify-center w-9 h-9 outline outline-1 outline-gray-200 shadow-sm rounded-lg bg-gray-50 mr-4">
                 <span v-if="post.icon">{{ post.icon.emoji }}</span>
             </div>
             <div class="flex flex-col flex-1">
                 <span class="leading-6 mb-0.5">
-                    <span class="font-medium">{{ post.properties.Title.title[0].plain_text }}</span>
-                    <span class="ml-2 font-regular leading-6 text-gray-400">{{ publishedAtReadable }}</span>
+                    <template v-for="title in post.properties.Title.title">
+                        <span>{{ title.plain_text }}</span>
+                    </template>
+                    <Tooltip :text="post.properties.Date.date.start">
+                        <span class="ml-1.5 leading-6 text-gray-400">{{ publishedAtReadable }}</span>
+                    </Tooltip>
                 </span>
                 <span class="font-regular leading-6 text-gray-600">{{ post.properties.Description.rich_text[0].plain_text
                 }}</span>
 
-                <img v-if="post.properties.Images.files.length != 0" :src="post.properties.Images.files[0].file.url" class="rounded-lg mt-4"/>
+                <div v-if="post.properties.Images.files.length != 0" class="mt-4 rounded-lg c-border-transparent">
+                    <img class="w-full h-full object-cover" :src="post.properties.Images.files[0].file.url" />
+                </div>
             </div>
         </div>
     </NuxtLink>

@@ -17,11 +17,11 @@
             !errorContent
         ">
             <BlogPost :header="header" :content="content" />
-            <div class="h-22 rounded-2xl border shadow-inner bg-white hover:bg-gray-50 hover:bg-opacity-50 transition"
+            <div class="h-21 rounded-2xl border bg-white hover:bg-gray-50 hover:bg-opacity-50 transition"
                  @click="goBack">
                 <div class="flex justify-between items-center p-5">
                     <div class="flex flex-col">
-                        <span class="font-medium  leading-6">
+                        <span>
                             Dominik
                         </span>
                         <span class="font-regular  leading-6 text-gray-600">
@@ -29,7 +29,7 @@
                         </span>
                     </div>
                     <div
-                         class="flex items-center justify-center w-12 h-12 border shadow-inner rounded-lg bg-gradient-to-b from-white to-gray-50">
+                         class="flex items-center justify-center w-12 h-12 border rounded-lg bg-gradient-to-b from-white to-gray-50">
                         <svg xmlns="http://www.w3.org/2000/svg"
                              viewBox="0 0 20 20"
                              fill="currentColor"
