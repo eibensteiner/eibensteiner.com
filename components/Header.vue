@@ -1,9 +1,7 @@
 <template>
     <header class="p-5 border-b border-gray-100">
         <div class="flex items-center flex-1">
-            <div class="w-14 h-14 mr-5 rounded-full c-border-transparent">
-                <img class="w-full h-full object-cover" :src="avatar" />
-            </div>
+            <Image class="w-14 h-14 mr-5 rounded-full" :src="avatar"></Image>
             <div class="flex flex-col">
                 <span>{{ name }}</span>
                 <span class="text-gray-600">{{ description }}</span>

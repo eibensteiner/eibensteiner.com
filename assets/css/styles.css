@@ -6,6 +6,10 @@
     @apply antialiased;
 }
 
+*::selection {
+    @apply bg-gray-100;
+}
+
 span {
     @apply inline-flex;
 }

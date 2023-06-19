@@ -22,9 +22,9 @@
                     </template>
                 </span>
 
-                <div v-if="post.properties.Images.files.length != 0" class="mt-4 rounded-lg c-border-transparent">
-                    <img class="w-full h-full object-cover bg-gray-50" loading="lazy" :src="post.properties.Images.files[0].file.url" />
-                </div>
+                <Image v-if="post.properties.Images.files.length != 0" class="mt-4 rounded-lg"
+                    :src="post.properties.Images.files[0].file.url"></Image>
+
             </div>
         </div>
     </NuxtLink>
@@ -59,7 +59,7 @@ const readableDate = computed(() => {
         let date = new Date(
             props.post.properties.Date[props.post.properties.Date.type].start
         )
-        return date.toLocaleString('en-US', {dateStyle: 'medium'})
+        return date.toLocaleString('en-US', { dateStyle: 'medium' })
     } else return '?'
 })
 </script>

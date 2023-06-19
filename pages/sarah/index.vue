@@ -1,15 +1,15 @@
 <template>
-    <div class="max-w-full">
-        <Header class="mb-5"
-                :user="filteredPosts[0].properties.Author.people[0]"></Header>
-        <div class="flex flex-col gap-4">
-            <BlogPostSmall v-if="!pending"
-                           v-for="post in filteredPosts"
-                           :post="post"
-                           :user="user" />
-            <BlogPostSmallPlaceholder v-else
-                                      v-for="el in [1, 2, 3]" />
-        </div>
+    <div class="border-l border-r border-gray-100 mx-auto max-w-xl w-full relative min-h-screen">
+        <Navigation></Navigation>
+        <main>
+            <Header :name="'Sarah Eibensteiner'" :description="'Frontend Developer from Austria'"
+                :email="'sarah@eibensteiner.me'"
+                :avatar="filteredPosts[0].properties.Author.people[0].avatar_url"></Header>
+            <div class="flex flex-col">
+                <BlogPostSmall v-if="!pending" v-for="post in filteredPosts" :post="post" :user="user" />
+                <BlogPostSmallPlaceholder v-else v-for="el in [1, 2, 3]" />
+            </div>
+        </main>
     </div>
 </template>
 
