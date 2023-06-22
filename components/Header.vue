@@ -11,7 +11,7 @@
             <Button :type="'primary'" :label="'Send Message'" class="flex-1 mr-3"></Button>
 
             <Tooltip :text="'Test'">
-                <Button :type="'secondary'" :label="'Share Profile'"></Button>
+                <Button :type="'secondary'" :label="'Share Profile'" :clipboard-text="email"></Button>
             </Tooltip>
         </div>
     </header>

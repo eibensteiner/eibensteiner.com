@@ -1,5 +1,8 @@
 <template>
-    <NuxtPage />
+    <div>
+        <NuxtPage />
+        <ButtonScrollToTop></ButtonScrollToTop>
+    </div>
 </template>
 
 <style>

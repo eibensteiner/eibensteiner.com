@@ -1,6 +1,6 @@
 <template>
     <div class="border-l border-r border-gray-100 mx-auto max-w-xl w-full relative min-h-screen">
-        <Navigation></Navigation>
+        <Navigation :handle="user"></Navigation>
         <main>
             <Header :name="'Dominik Eibensteiner'" :description="'Product Designer from Austria'"
                 :email="'dominik.eibensteiner@outlook.com'"

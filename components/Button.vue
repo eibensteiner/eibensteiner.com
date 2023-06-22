@@ -1,5 +1,5 @@
 <template>
-    <button class="whitespace-nowrap rounded-full shadow-sm select-none" :class="[type, isIconOnly ? 'icon-only' : '']">{{ label }}</button>
+    <button class="whitespace-nowrap rounded-full shadow-sm select-none" @click="clipboardText ? copyToClipboard(clipboardText) : ''" :class="[type, isIconOnly ? 'icon-only' : '']">{{ label }}</button>
 </template>
 
 <style>
@@ -8,7 +8,7 @@
 }
 
 .secondary {
-    @apply h-11 px-6 outline outline-1 outline-gray-200 hover:bg-gray-50 transition-colors;
+    @apply h-11 px-6 outline outline-1 bg-white outline-gray-200 hover:bg-gray-50 transition-colors;
 }
 
 .icon-only {
@@ -17,5 +17,9 @@
 </style>
 
 <script setup>
-const props = defineProps(['label', 'type', 'isIconOnly'])
+const props = defineProps(['label', 'type', 'isIconOnly', 'clipboardText'])
+
+const copyToClipboard = (message) => {
+    navigator.clipboard.writeText(message);
+}
 </script>
