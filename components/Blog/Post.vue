@@ -1,49 +1,64 @@
 <template>
-    <section class="mt-1 mb-6">
-
-        <!-- TYTUŁ -->
-        <div>
-            <img v-if="header.cover"
-                 class="w-full h-64 object-cover rounded-box mt-2 mb-4"
-                 :src="header.cover[header.cover.type].url"
-                 alt="zdjęcie posta" />
-            <div v-else></div>
-        </div>
-
-        <div class="prose mb-6">
-            <h1 v-for="title in header.properties.Title[
-                header.properties.Title.type
-            ]">
-                {{ title.plain_text }}
-            </h1>
-        </div>
-        <div class="flex items-center gap-2  mb-6">
-            <div class="flex items-center gap-2"
-                 v-for="author in header.properties.Author.people">
-                <div class="avatar">
-                    <div class="w-6 rounded">
-                        <img :src="author.avatar_url" />
-                    </div>
-                </div>
-                {{ author.name }}
+    <NuxtLink class="w-full p-6 bg-white border-b border-gray-100"
+        :to="`/${$route.params.user}/${post.id}`">
+        <div class="flex items-start">
+            <div
+                class="flex items-center justify-center w-9 h-9 outline outline-1 outline-gray-200 shadow-sm rounded-lg bg-gray-50 mr-4">
+                <span v-if="post.icon" class="select-none">{{ post.icon.emoji }}</span>
             </div>
-            <div v-if="header.properties.Date[header.properties.Date.type]">
-                {{ publishedAtReadable }}
+            <div class="flex flex-col flex-1">
+                <span class="leading-6 mb-0.5">
+                    <template v-for="title in post.properties.Title.title">
+                        <span>{{ title.plain_text }}</span>
+                    </template>
+                    <Tooltip :text="readableDate" :direction="'top'">
+                        <span class="ml-1.5 leading-6 text-gray-400">{{ publishedAtReadable }}</span>
+                    </Tooltip>
+                </span>
+
+                <span class="font-regular leading-6 text-gray-600">
+                    <template v-for="subtitle in post.properties.Description.rich_text">
+                        <span>{{ subtitle.plain_text }}</span>
+                    </template>
+                </span>
+
+                <Image v-if="post.properties.Images.files.length != 0" class="mt-4 rounded-lg"
+                    :src="post.properties.Images.files[0].file.url"></Image>
             </div>
         </div>
-    </section>
+    </NuxtLink>
 </template>
 
 <script setup>
-const props = defineProps(['header'])
+const props = defineProps(['post'])
+
 const publishedAtReadable = computed(() => {
-    if (props.header.properties.Date[props.header.properties.Date.type]) {
+    let current = Math.floor(new Date().getTime() / 1000);
+    let posted = Math.floor(new Date(props.post.properties.Date.date.start).getTime() / 1000);
+    let diff = current - posted;
+    let time;
+
+    if (diff < 86400) {
+        // Less than a day has passed:
+        return 'Today';
+    } else if (diff < 2628000) {
+        // Less than a month has passed:
+        return `${Math.floor(diff / 86400)}d`;
+    } else if (diff < 31536000) {
+        // Less than a year has passed:
+        return `${Math.floor(diff / 2628000)}m`;
+    } else {
+        // More than a year has passed:
+        return `${Math.floor(diff / 31536000)}y`;
+    }
+})
+
+const readableDate = computed(() => {
+    if (props.post.properties.Date[props.post.properties.Date.type]) {
         let date = new Date(
-            props.header.properties.Date[
-                props.header.properties.Date.type
-            ].start
+            props.post.properties.Date[props.post.properties.Date.type].start
         )
-        return date.toLocaleString('en-US')
+        return date.toLocaleString('en-US', { dateStyle: 'medium' })
     } else return '?'
 })
 </script>

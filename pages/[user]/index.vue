@@ -2,8 +2,8 @@
     <div class="relative min-h-screen">
         <Header :user="filteredPosts[0].properties.Author.people[0]"/>
         <div class="flex flex-col">
-            <BlogPostSmall v-if="!pending" v-for="post in filteredPosts" :post="post" />
-            <BlogPostSmallPlaceholder v-else v-for="el in [1, 2, 3]" />
+            <BlogPost v-if="!pending" v-for="post in filteredPosts" :post="post" />
+            <BlogPostPlaceholder v-else v-for="el in [1, 2, 3]" />
         </div>
     </div>
 </template>

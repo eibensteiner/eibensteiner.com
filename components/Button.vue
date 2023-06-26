@@ -1,5 +1,5 @@
 <template>
-    <button class="whitespace-nowrap rounded-full shadow-sm select-none" @click="clipboardText ? copyToClipboard(clipboardText) : ''" :class="[type, isIconOnly ? 'icon-only' : '']">{{ label }}</button>
+    <button class="whitespace-nowrap rounded-full shadow-sm select-none" @click="$emit('click')" :class="[type, isIconOnly ? 'icon-only' : '']">{{ label }}</button>
 </template>
 
 <style>
@@ -17,9 +17,5 @@
 </style>
 
 <script setup>
-const props = defineProps(['label', 'type', 'isIconOnly', 'clipboardText'])
-
-const copyToClipboard = (message) => {
-    navigator.clipboard.writeText(message);
-}
+const props = defineProps(['label', 'type', 'isIconOnly'])
 </script>
