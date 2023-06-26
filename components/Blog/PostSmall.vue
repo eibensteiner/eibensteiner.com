@@ -1,6 +1,6 @@
 <template>
     <NuxtLink class="w-full p-6 bg-white border-b border-gray-100"
-        :to="post.properties.Type.select.name == 'Writing' ? `/${$route.params.user}/${post.id}` : post.properties.Link.url">
+        :to="`/${$route.params.user}/${post.id}`">
         <div class="flex items-start">
             <div
                 class="flex items-center justify-center w-9 h-9 outline outline-1 outline-gray-200 shadow-sm rounded-lg bg-gray-50 mr-4">

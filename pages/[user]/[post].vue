@@ -10,34 +10,7 @@
                 </li>
             </ul>
         </div>
-        <BlogPost v-if="
-            !pendingHeader &&
-            !pendingContent &&
-            !errorHeader &&
-            !errorContent
-        "
-                  :header="header"
-                  :content="content" />
-        <div v-else-if="
-            (errorHeader || errorContent) &&
-            !pendingHeader &&
-            !pendingContent
-        ">
-            <div class="hero bg-base-100">
-                <div class="hero-content text-center">
-                    <div class="">
-                        <p class="py-6">
-                            Oops! This article doesn't exist or has been
-                            deleted.
-                        </p>
-                        <button class="btn btn-neutral btn-sm"
-                                @click="goBack">
-                            &lArr; Go back
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <BlogPost v-if="!pendingHeader && !errorHeader" :header="header" />
         <BlogPostPlaceholder v-else />
     </div>
 </template>
@@ -55,18 +28,8 @@ const {
     $fetch(`/api/notion/retrieve-page/${route.params.post}`)
 )
 
-const {
-    data: content,
-    pending: pendingContent,
-    refresh: refreshContent,
-    error: errorContent,
-} = await useLazyAsyncData('content', () =>
-    $fetch(`/api/notion/retrieve-block-children/${route.params.post}`)
-)
-
 const goBack = () => {
     router.go(-1)
 }
 refreshHeader()
-refreshContent()
 </script>
