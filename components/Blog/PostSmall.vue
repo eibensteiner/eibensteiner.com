@@ -1,6 +1,6 @@
 <template>
     <NuxtLink class="w-full p-6 bg-white border-b border-gray-100"
-        :to="post.properties.Type.select.name == 'Writing' ? `/${user}/${post.id}` : post.properties.Link.url">
+        :to="post.properties.Type.select.name == 'Writing' ? `/${$route.params.user}/${post.id}` : post.properties.Link.url">
         <div class="flex items-start">
             <div
                 class="flex items-center justify-center w-9 h-9 outline outline-1 outline-gray-200 shadow-sm rounded-lg bg-gray-50 mr-4">
@@ -24,14 +24,13 @@
 
                 <Image v-if="post.properties.Images.files.length != 0" class="mt-4 rounded-lg"
                     :src="post.properties.Images.files[0].file.url"></Image>
-
             </div>
         </div>
     </NuxtLink>
 </template>
 
 <script setup>
-const props = defineProps(['post', 'user'])
+const props = defineProps(['post'])
 
 const publishedAtReadable = computed(() => {
     let current = Math.floor(new Date().getTime() / 1000);

@@ -1,15 +1,10 @@
 <template>
-    <div class="border-l border-r border-gray-100 mx-auto max-w-xl w-full relative min-h-screen">
-        <Navigation :handle="user"></Navigation>
-        <main>
-            <Header :name="'Sarah Eibensteiner'" :description="'Frontend Developer from Austria'"
-                :email="'sarah@eibensteiner.me'"
-                :avatar="filteredPosts[0].properties.Author.people[0].avatar_url"></Header>
-            <div class="flex flex-col">
-                <BlogPostSmall v-if="!pending" v-for="post in filteredPosts" :post="post" :user="user" />
-                <BlogPostSmallPlaceholder v-else v-for="el in [1, 2, 3]" />
-            </div>
-        </main>
+    <div class="relative min-h-screen">
+        <Header :user="filteredPosts[0].properties.Author.people[0]"/>
+        <div class="flex flex-col">
+            <BlogPostSmall v-if="!pending" v-for="post in filteredPosts" :post="post" />
+            <BlogPostSmallPlaceholder v-else v-for="el in [1, 2, 3]" />
+        </div>
     </div>
 </template>
 
@@ -17,7 +12,8 @@
 
 // API Cursor for getting next articles
 const cursor = ref(undefined)
-const user = 'sarah';
+const route = useRoute();
+const user = route.params.user;
 
 // Fetch all the posts from Notion (Async)
 const {
