@@ -5540,11 +5540,6 @@ vue-devtools-stub@^0.1.0:
   resolved "https://registry.yarnpkg.com/vue-devtools-stub/-/vue-devtools-stub-0.1.0.tgz#a65b9485edecd4273cedcb8102c739b83add2c81"
   integrity sha512-RutnB7X8c5hjq39NceArgXg28WZtZpGc3+J16ljMiYnFhKvd8hITxSWQSQ5bvldxMDU6gG5mkxl1MTQLXckVSQ==
 
-vue-mathjax-next@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/vue-mathjax-next/-/vue-mathjax-next-0.0.4.tgz#795ff0d423fe4a2bbe12d87e2e6e534981ff12b1"
-  integrity sha512-8M+dUNc3j5IhC/gLVxqGoT7QjgJU8dMTjrCpC5qVwTcKvp2Iyxyulltv45UXWCm9UPC28viplP964Y0LZYiGMQ==
-
 vue-router@^4.1.6:
   version "4.1.6"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-4.1.6.tgz#b70303737e12b4814578d21d68d21618469375a1"
