@@ -1,34 +1,32 @@
 <template>
-    <div class="relative min-h-screen">
+    <div class="relative min-h-screen" @scroll="onScroll">
         <Header :user="filteredPosts[0].properties.Author.people[0]" />
         <div class="flex flex-col">
             <BlogPost v-for="post in postsToRemain" :post="post" />
             <BlogPost v-if="!pending" v-for="post in postsFromNotion.results" :post="post" />
             <BlogPostPlaceholder v-if="pending" v-for="el in [1, 2, 3]" />
         </div>
-        <button class="btn btn-block btn-primary" :class="pending || !postsFromNotion.has_more ? 'invisible' : 'visible'"
-            @click="loadMore">
-            <span>Load more</span>
-        </button>
     </div>
 </template>
 
 <script setup>
 import { postsToRemain } from '~/store/posts.js'
 
-// API Cursor for getting next articles
-const cursor = ref(undefined)
+const cursor = ref(undefined) // Cursor to define the page position 
 const route = useRoute();
 const user = route.params.user;
 
-// Fetch all the posts from Notion (Async)
+// Fetch posts from the Notion API
 const {
-    pending,
+    pending: pending,
     data: postsFromNotion,
-    refresh,
+    refresh: refresh,
+    error: error,
 } = useLazyAsyncData('postsFromNotion', () =>
-    $fetch(`/api/notion/query-user-posts?cursor=${cursor.value}&user=${user.charAt(0).toUpperCase() + user.slice(1)}`)
+    $fetch(`/api/query-user-posts?cursor=${cursor.value}&user=${user.charAt(0).toUpperCase() + user.slice(1)}`)
 )
+
+watch(postsFromNotion, () => { })
 
 const loadMore = () => {
     postsToRemain.value = [
@@ -46,4 +44,16 @@ const filteredPosts = computed(() => {
 
     return posts;
 })
+
+onMounted(() => {
+    // Load more posts on reaching the bottom of the page
+    window.onscroll = () => {
+        let bottomOfWindow = Math.max(window.scrollY, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight === document.documentElement.offsetHeight
+
+        if (bottomOfWindow && postsFromNotion.value.has_more && !pending.value) {
+            loadMore();
+        }
+    }
+});
+
 </script>
