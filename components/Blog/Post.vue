@@ -1,32 +1,29 @@
 <template>
-    <NuxtLink class="w-full p-6 bg-white border-b border-gray-100"
-        :to="`/${$route.params.user}/${post.id}`">
-        <div class="flex items-start">
-            <div
-                class="flex items-center justify-center w-9 h-9 outline outline-1 outline-gray-200 shadow-sm rounded-lg bg-gray-50 mr-4">
-                <span v-if="post.icon" class="select-none">{{ post.icon.emoji }}</span>
-            </div>
-            <div class="flex flex-col flex-1">
-                <span class="leading-6 mb-0.5">
-                    <template v-for="title in post.properties.Title.title">
-                        <span>{{ title.plain_text }}</span>
-                    </template>
-                    <Tooltip :text="readableDate" :direction="'top'">
-                        <span class="ml-1.5 leading-6 text-gray-400">{{ publishedAtReadable }}</span>
-                    </Tooltip>
-                </span>
-
-                <span class="font-regular leading-6 text-gray-600">
-                    <template v-for="subtitle in post.properties.Description.rich_text">
-                        <span>{{ subtitle.plain_text }}</span>
-                    </template>
-                </span>
-
-                <Image v-if="post.properties.Images.files.length != 0" class="mt-4 rounded-lg"
-                    :src="post.properties.Images.files[0].file.url"></Image>
-            </div>
+    <div class="w-full flex items-start p-6 bg-white border-b border-gray-100">
+        <div
+            class="flex items-center justify-center w-9 h-9 outline outline-1 outline-gray-200 shadow-sm rounded-lg bg-gray-50 mr-4">
+            <span v-if="post.icon" class="select-none">{{ post.icon.emoji }}</span>
         </div>
-    </NuxtLink>
+        <div class="flex flex-col flex-1">
+            <span class="leading-6 mb-0.5">
+                <template v-for="title in post.properties.Title.title">
+                    <span>{{ title.plain_text }}</span>
+                </template>
+                <Tooltip :text="readableDate" :direction="'top'">
+                    <span class="ml-1.5 leading-6 text-gray-400">{{ publishedAtReadable }}</span>
+                </Tooltip>
+            </span>
+
+            <span class="font-regular leading-6 text-gray-600">
+                <template v-for="subtitle in post.properties.Description.rich_text">
+                    <span>{{ subtitle.plain_text }}</span>
+                </template>
+            </span>
+
+            <Image v-if="post.properties.Images.files.length != 0" class="mt-4 rounded-lg"
+                :src="post.properties.Images.files[0].file.url"></Image>
+        </div>
+    </div>
 </template>
 
 <script setup>

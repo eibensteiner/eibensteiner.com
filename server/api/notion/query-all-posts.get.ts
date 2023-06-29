@@ -14,7 +14,7 @@ export default defineEventHandler((event) => {
                         equals: true,
                     },
                 },
-            ],
+            ]
         },
         sorts: [
             {
@@ -22,8 +22,8 @@ export default defineEventHandler((event) => {
                 direction: 'descending',
             },
         ],
-        start_cursor:
-            query.cursor != 'undefined' ? query.cursor.toString() : undefined,
+        page_size: 3,
+        start_cursor: query.cursor != 'undefined' ? query.cursor?.toString() : undefined,
     })
 
     return response
