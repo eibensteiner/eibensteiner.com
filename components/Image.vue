@@ -1,6 +1,6 @@
 <template>
     <div class="c-border-transparent">
-        <img class="w-full h-full object-cover bg-gray-50 select-none" loading="lazy" :src="src" :alt="alt" />
+        <nuxt-img class="w-full h-full object-cover bg-gray-50 select-none" :src="src" :alt="alt" loading="lazy" fit="cover" format="webp"/>
     </div>
 </template>
 

@@ -22,6 +22,24 @@
 
             <Image v-if="post.properties.Images.files.length != 0" class="mt-4 rounded-lg"
                 :src="post.properties.Images.files[0].file.url"></Image>
+
+            <nuxt-link v-if="post.properties.Link.url">
+                <div class="mt-4 bg-gray-50 rounded-lg h-13 w-full flex items-center p-3">
+                    <div
+                        class="flex items-center justify-center w-7 h-7 outline outline-1 outline-gray-200 shadow-sm rounded-lg bg-white mr-3">
+                        <span class="select-none text-sm">{{ post.properties.Link.url.replace(/^https?:\/\//i,
+                            '').charAt(0).toUpperCase() }}</span>
+                    </div>
+                    <div class="flex flex-1 items-center justify-between">
+                        <span>
+                            <span>{{ post.properties.Link.url.replace(/^https?:\/\//i, '').split('/').shift() }}</span>
+                            <span class="text-gray-400 ml-1.5">{{ getLinkSubpages }}</span>
+                        </span>
+                        <span>→</span>
+                    </div>
+
+                </div>
+            </nuxt-link>
         </div>
     </div>
 </template>
@@ -57,5 +75,11 @@ const readableDate = computed(() => {
         )
         return date.toLocaleString('en-US', { dateStyle: 'medium' })
     } else return '?'
+})
+
+const getLinkSubpages = computed(() => {
+    let linkParts = props.post.properties.Link.url.split('/');
+
+    return linkParts.slice(3).join('/');
 })
 </script>

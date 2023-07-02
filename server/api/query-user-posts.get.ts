@@ -8,20 +8,10 @@ export default defineEventHandler((event) => {
     const response = notion.databases.query({
         database_id: process.env.NOTION_POST_DATABASE!,
         filter: {
-            and: [
-                {
-                    property: 'Visible',
-                    checkbox: {
-                        equals: true,
-                    },
-                },
-                {
-                    property: 'People',
-                    select: {
-                        equals: user as string,
-                    },
-                }
-            ]
+            property: 'People',
+            select: {
+                equals: user as string,
+            },
         },
         sorts: [
             {

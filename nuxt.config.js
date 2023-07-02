@@ -5,5 +5,8 @@ export default defineNuxtConfig({
         layoutTransition: { name: 'page', mode: 'out-in' },
     },
     css: ['@/assets/css/styles.css'],
-    modules: ['@nuxtjs/tailwindcss'],
+    modules: ['@nuxtjs/tailwindcss', '@nuxt/image'],
+    image: {
+        domains: ['s3.us-west-2.amazonaws.com']
+    }
 })
