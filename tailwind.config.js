@@ -9,16 +9,16 @@ module.exports = {
     theme: {
         extend: {
             height: {
-                22: '5.5rem',
-            },
-            boxShadow: {
-                inner: 'inset 0px -1.5px 1.5px 0px hsla(0, 0%, 0%, 0.04), 0px 1.5px 1.5px 0px hsla(0, 0%, 100%, 0.04)',
+                21: '5.25rem',
             },
             borderRadius: {
                 inherit: 'inherit',
             },
             fontFamily: {
-                sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+                sans: ['Inter var', 'ui-sans-serif', 'system-ui'],
+            },
+            fontWeight: {
+                'normal-medium': '450',
             },
         },
     },

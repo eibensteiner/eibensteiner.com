@@ -7,6 +7,7 @@
         "preview": "nuxt preview"
     },
     "devDependencies": {
+        "@nuxt/image": "^1.0.0-rc.1",
         "@nuxtjs/tailwindcss": "^6.4.1",
         "nuxt": "^3.0.0",
         "prettier": "2.6.2",
@@ -14,7 +15,6 @@
     },
     "dependencies": {
         "@notionhq/client": "^1.0.4",
-        "@tailwindcss/typography": "^0.5.2",
-        "vue-mathjax-next": "^0.0.4"
+        "@tailwindcss/typography": "^0.5.2"
     }
 }

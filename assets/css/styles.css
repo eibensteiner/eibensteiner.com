@@ -6,10 +6,30 @@
     @apply antialiased;
 }
 
-.c-border-transparent {
-    @apply relative overflow-hidden after:border after:border-black after:border-opacity-5 after:absolute after:left-0 after:top-0 after:right-0 after:bottom-0 after:rounded-inherit;
+*::selection {
+    @apply bg-gray-100;
 }
 
-.c-border-b-transparent {
-    @apply relative overflow-hidden after:border-b after:border-black after:border-opacity-5 after:absolute after:left-0 after:top-0 after:right-0 after:bottom-0 after:rounded-inherit;
+span {
+    @apply inline-flex;
+}
+
+.button {
+    @apply whitespace-nowrap rounded-full shadow-sm select-none;
+}
+
+.button.primary {
+    @apply h-11 px-6 bg-gray-900 text-white;
+}
+
+.button.secondary {
+    @apply h-11 px-6 outline outline-1 bg-white outline-gray-200 hover:bg-gray-50 transition-colors;
+}
+
+.button.icon-only {
+    @apply px-0 w-9 h-9;
+}
+
+.c-border-transparent {
+    @apply relative overflow-hidden after:border after:border-black after:border-opacity-5 after:absolute after:left-0 after:top-0 after:right-0 after:bottom-0 after:rounded-inherit;
 }

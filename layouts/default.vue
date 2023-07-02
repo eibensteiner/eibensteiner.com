@@ -1,6 +1,8 @@
 <template>
-    <div class="p-28 relative">
-        <NuxtPage class="max-w-md mx-auto p-4 xl:p-0" />
+    <div class="border-l border-r border-gray-100 mx-auto max-w-xl w-full">
+        <Navigation :handle="$route.params.user"></Navigation>
+        <NuxtPage />
+        <ButtonScrollToTop></ButtonScrollToTop>
     </div>
 </template>
 
