@@ -1,22 +1,31 @@
 <template>
     <div class="relative min-h-screen" @scroll="onScroll">
-        <Header :user="cUser" />
-        <div class="flex flex-col">
+        <Header :user="user" />
+        <div class="entry-container flex flex-col">
             <BlogPost v-if="postsToRemain" v-for="post in postsToRemain" :post="post" />
             <BlogPost v-if="!pending" v-for="post in postsFromNotion.results" :post="post" />
-            <BlogPostPlaceholder v-if="pending" v-for="el in [1, 2, 3]" />
+            <template v-if="pending">
+                <BlogPostPlaceholder/>
+                <BlogPostPlaceholder class="opacity-70"/>
+                <BlogPostPlaceholder class="opacity-40"/>
+            </template>
         </div>
     </div>
 </template>
+
+<style>
+.entry-container > *:not(:last-child) {
+    @apply border-b border-gray-100;
+}
+</style>
 
 <script setup>
 import { postsToRemain } from '~/store/posts.js'
 import users from '~/plugins/users.js';
 
-const cursor = ref(undefined) // Cursor to define the page position 
-const route = useRoute();
-const user = route.params.user;
-const cUser = users.find(concreteUser => concreteUser.handle === user)
+const cursor = ref(undefined);
+const route = useRoute().params.user;
+const user = users.find(concreteUser => concreteUser.handle === route);
 
 // Fetch posts from the Notion API
 const {
@@ -25,7 +34,7 @@ const {
     refresh: refresh,
     error: error,
 } = useLazyAsyncData('postsFromNotion', () =>
-    $fetch(`/api/query-user-posts?cursor=${cursor.value}&user=${user.charAt(0).toUpperCase() + user.slice(1)}`)
+    $fetch(`/api/query-user-posts?cursor=${cursor.value}&user=${route.charAt(0).toUpperCase() + route.slice(1)}`)
 )
 
 watch(postsFromNotion, () => { })

@@ -1,9 +1,10 @@
 <template>
     <div class="c-border-transparent">
-        <nuxt-img class="w-full h-full object-cover bg-gray-50 select-none" :src="src" :alt="alt" loading="lazy" fit="cover" format="webp"/>
+        <nuxt-img class="object-cover bg-gray-50 select-none" :src="src" :alt="alt" loading="lazy" fit="cover" format="webp"
+            :width="width" :height="height" />
     </div>
 </template>
 
 <script setup>
-const props = defineProps(['src', 'alt'])
+const props = defineProps(['src', 'alt', 'width', 'height'])
 </script>

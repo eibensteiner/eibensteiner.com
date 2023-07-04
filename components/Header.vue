@@ -4,7 +4,7 @@
             <Image class="w-14 h-14 mr-5 rounded-full" :src="'https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png'" :alt="user.name"/>
             <div class="flex flex-col">
                 <span>{{ user.name }}</span>
-                <span class="text-gray-600">{{ user.email }}</span>
+                <span class="text-gray-600">{{ user.description }}</span>
             </div>
         </div>
         <div class="flex mt-6">
