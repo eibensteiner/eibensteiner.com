@@ -1,5 +1,5 @@
 <template>
-    <div class="relative min-h-screen" @scroll="onScroll">
+    <div class="relative min-h-screen">
         <Header :user="user" />
         <div class="entry-container flex flex-col">
             <Entry v-if="postsToRemain" v-for="post in postsToRemain" :post="post" />
@@ -14,7 +14,7 @@
 </template>
 
 <style>
-.entry-container > *:not(:last-child) {
+.entry-container>*:not(:last-child) {
     @apply border-b border-gray-100;
 }
 </style>
@@ -48,15 +48,26 @@ const loadMore = () => {
     refresh()
 }
 
-onMounted(() => {
-    // Load more posts on reaching the bottom of the page
-    window.onscroll = () => {
-        let bottomOfWindow = Math.max(window.scrollY, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight === document.documentElement.offsetHeight
+// Load more posts on reaching the bottom of the page
+const handleScroll = () => {
+    let bottomOfWindow = Math.max(window.scrollY, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight >= document.documentElement.offsetHeight;
 
-        if (bottomOfWindow && postsFromNotion.value.has_more && !pending.value) {
-            loadMore();
-        }
+    if (bottomOfWindow && postsFromNotion.value.has_more && !pending.value) {
+        loadMore();
     }
+};
+
+onMounted(() => {
+    // Attach scroll event listener
+    window.addEventListener('scroll', handleScroll);
+
+    // Check if the user is already at the bottom of the page when the component mounts
+    handleScroll();
+});
+
+// Clean up the scroll event listener when the component is unmounted
+onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll);
 });
 
 </script>

@@ -10,6 +10,11 @@
     @apply bg-gray-100;
 }
 
+
+body {
+    @apply animate-fade-in;
+}
+
 span {
     @apply inline-flex;
 }
