@@ -1,1 +1,1 @@
-export const postsToRemain = ref([]);
+export const nextEntries = ref([]);

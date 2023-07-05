@@ -2,11 +2,11 @@
     <div class="w-full flex items-start p-6 bg-white">
         <div
             class="flex items-center justify-center w-9 h-9 outline outline-1 outline-gray-200 shadow-sm rounded-lg bg-gray-50 mr-4">
-            <span v-if="post.icon" class="select-none">{{ post.icon.emoji }}</span>
+            <span v-if="content.icon" class="select-none">{{ content.icon.emoji }}</span>
         </div>
         <div class="flex flex-col flex-1">
             <span class="leading-6 mb-0.5">
-                <template v-for="title in post.properties.Title.title">
+                <template v-for="title in content.properties.Title.title">
                     <span>{{ title.plain_text }}</span>
                 </template>
                 <Tooltip :text="readableDate" :direction="'top'">
@@ -15,23 +15,23 @@
             </span>
 
             <span class="font-regular leading-6 text-gray-600">
-                <template v-for="subtitle in post.properties.Description.rich_text">
+                <template v-for="subtitle in content.properties.Description.rich_text">
                     <span>{{ subtitle.plain_text }}</span>
                 </template>
             </span>
 
-            <Image v-if="post.properties.Images.files.length != 0" class="mt-4 rounded-lg"
-                :src="post.properties.Images.files[0].file.url" :width="1000" :height="800" :alt="post.properties.Title.title[0].plain_text"></Image>
+            <Image v-if="content.properties.Images.files.length != 0" class="mt-4 rounded-lg"
+                :src="content.properties.Images.files[0].file.url" :width="1000" :height="800" :alt="content.properties.Title.title[0].plain_text"></Image>
         </div>
     </div>
 </template>
 
 <script setup>
-const props = defineProps(['post'])
+const props = defineProps(['content'])
 
 const publishedAtReadable = computed(() => {
     let current = Math.floor(new Date().getTime() / 1000);
-    let posted = Math.floor(new Date(props.post.properties.Date.date.start).getTime() / 1000);
+    let posted = Math.floor(new Date(props.content.properties.Date.date.start).getTime() / 1000);
     let diff = current - posted;
     let time;
 
@@ -51,9 +51,9 @@ const publishedAtReadable = computed(() => {
 })
 
 const readableDate = computed(() => {
-    if (props.post.properties.Date[props.post.properties.Date.type]) {
+    if (props.content.properties.Date[props.content.properties.Date.type]) {
         let date = new Date(
-            props.post.properties.Date[props.post.properties.Date.type].start
+            props.content.properties.Date[props.content.properties.Date.type].start
         )
         return date.toLocaleString('en-US', { dateStyle: 'medium' })
     } else return '?'
