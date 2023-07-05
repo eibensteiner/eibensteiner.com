@@ -1,14 +1,14 @@
 <template>
     <header class="p-5 border-b border-gray-100">
         <div class="flex items-center flex-1">
-            <Image class="w-14 h-14 mr-5 rounded-full" :src="'https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png'" :alt="user.name"/>
+            <Image class="w-14 h-14 mr-5 rounded-full" :src="'https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png'" :width="'200'" :height="'200'" :alt="user.name"/>
             <div class="flex flex-col">
                 <span>{{ user.name }}</span>
                 <span class="text-gray-600">{{ user.description }}</span>
             </div>
         </div>
         <div class="flex mt-6">
-            <Button :type="'primary'" :label="'Send Message'" class="flex-1 mr-3"></Button>
+            <ButtonSendMessage :type="'primary'" :label="'Send Message'" class="flex-1 mr-3"></ButtonSendMessage>
             <ButtonCopyToClipboard :type="'secondary'" :label="'Share Profile'" :clipboard-text="user.email"></ButtonCopyToClipboard>
         </div>
     </header>

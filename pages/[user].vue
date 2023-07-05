@@ -2,12 +2,12 @@
     <div class="relative min-h-screen" @scroll="onScroll">
         <Header :user="user" />
         <div class="entry-container flex flex-col">
-            <BlogPost v-if="postsToRemain" v-for="post in postsToRemain" :post="post" />
-            <BlogPost v-if="!pending" v-for="post in postsFromNotion.results" :post="post" />
+            <Entry v-if="postsToRemain" v-for="post in postsToRemain" :post="post" />
+            <Entry v-if="!pending" v-for="post in postsFromNotion.results" :post="post" />
             <template v-if="pending">
-                <BlogPostPlaceholder/>
-                <BlogPostPlaceholder class="opacity-70"/>
-                <BlogPostPlaceholder class="opacity-40"/>
+                <EntryPlaceholder />
+                <EntryPlaceholder class="opacity-70" />
+                <EntryPlaceholder class="opacity-40" />
             </template>
         </div>
     </div>
@@ -20,7 +20,7 @@
 </style>
 
 <script setup>
-import { postsToRemain } from '~/store/posts.js'
+import { postsToRemain } from '~/store/entries.js'
 import users from '~/plugins/users.js';
 
 const cursor = ref(undefined);
@@ -34,7 +34,7 @@ const {
     refresh: refresh,
     error: error,
 } = useLazyAsyncData('postsFromNotion', () =>
-    $fetch(`/api/query-user-posts?cursor=${cursor.value}&user=${route.charAt(0).toUpperCase() + route.slice(1)}`)
+    $fetch(`/api/query-user-entries?cursor=${cursor.value}&user=${route.charAt(0).toUpperCase() + route.slice(1)}`)
 )
 
 watch(postsFromNotion, () => { })

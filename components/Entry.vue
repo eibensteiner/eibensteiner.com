@@ -21,7 +21,7 @@
             </span>
 
             <Image v-if="post.properties.Images.files.length != 0" class="mt-4 rounded-lg"
-                :src="post.properties.Images.files[0].file.url" :width="1000" :height="800"></Image>
+                :src="post.properties.Images.files[0].file.url" :width="1000" :height="800" :alt="post.properties.Title.title[0].plain_text"></Image>
         </div>
     </div>
 </template>

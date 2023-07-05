@@ -19,8 +19,6 @@
 </style>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue';
-
 const isVisible = ref(false);
 
 const handleScroll = () => {
