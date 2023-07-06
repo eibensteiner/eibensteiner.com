@@ -1,6 +1,5 @@
 <template>
     <div class="relative min-h-screen">
-        <Header :user="user" />
         <div class="entry-container flex flex-col">
             <Entry v-if="nextEntries" v-for="entry in nextEntries" :content="entry" />
             <Entry v-if="!pending" v-for="entry in currentEntries.results" :content="entry" />

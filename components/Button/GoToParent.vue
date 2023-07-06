@@ -1,6 +1,6 @@
 <template>
-    <Tooltip :text="'Go Back'" :direction="'bottom'">
-        <button class="button secondary icon-only" @click="goToParent">←</button>
+    <Tooltip :text="'Awesomeness in the making'" :direction="'bottom'">
+        <button class="button secondary icon-only" @click="goToParent" disabled>←</button>
     </Tooltip>
 </template>
 

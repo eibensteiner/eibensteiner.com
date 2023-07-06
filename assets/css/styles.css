@@ -31,6 +31,10 @@ span {
     @apply h-11 px-6 outline outline-1 bg-white outline-gray-200 hover:bg-gray-50 transition-colors;
 }
 
+.button.secondary[disabled] {
+    @apply cursor-not-allowed opacity-40 hover:bg-white;
+}
+
 .button.icon-only {
     @apply px-0 w-9 h-9;
 }
