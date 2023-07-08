@@ -2,7 +2,7 @@
     <div class="relative min-h-screen">
         <div class="entry-container flex flex-col">
             <Entry v-if="nextEntries" v-for="entry in nextEntries" :content="entry" />
-            <Entry v-if="!pending" v-for="entry in currentEntries.results" :content="entry" />
+            <Entry v-if="!pending && currentEntries" v-for="entry in currentEntries.results" :content="entry" />
             <template v-if="pending">
                 <EntryPlaceholder />
                 <EntryPlaceholder class="opacity-70" />
@@ -47,10 +47,10 @@ const fetchEntries = () => {
 
 // Fetch entries from the Notion API
 const {
-  pending: pending,
+  pending,
   currentEntries,
-  refresh: refresh,
-  error: error,
+  refresh,
+  error,
 } = fetchEntries();
 
 // Retrigger the API call and load more entries
