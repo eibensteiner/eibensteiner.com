@@ -13,7 +13,7 @@
 </template>
 
 <style>
-.entry-container > *:not(:last-child) {
+.entry-container>*:not(:last-child) {
     @apply border-b border-gray-100;
 }
 </style>
@@ -57,15 +57,23 @@ const handleScroll = () => {
     }
 };
 
+useHead({
+    lang: 'en',
+    title: user.name,
+    meta: [
+        { name: 'description', content: user.description }
+    ]
+})
+
 definePageMeta({
-  middleware: 'check-user'
+    middleware: 'check-user',
 })
 
 // Watch for changes in the currentEntries object
 watchEffect(() => {
-  if (currentEntries && currentEntries.results) {
-    // Handle the changes in the currentEntries object
-  }
+    if (currentEntries && currentEntries.results) {
+        // Handle the changes in the currentEntries object
+    }
 });
 
 onMounted(() => {
