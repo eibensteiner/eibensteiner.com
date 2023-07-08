@@ -27,31 +27,16 @@ const route = useRoute().params.user; // Get the user parameter from the current
 const user = users.find(user => user.handle === route); // Find the user object based on the route parameter
 const router = useRouter();
 
-// Fetch entries from the Notion API if user.handle exists
-const fetchEntries = () => {
-  if (user && user.handle) {
-    const url = `/api/query-user-entries?cursor=${cursor.value}&user=${user.handle.charAt(0).toUpperCase() + user.handle.slice(1)}`;
-    const {
-      pending: pending,
-      data: currentEntries,
-      refresh: refresh,
-      error: error,
-    } = useLazyAsyncData('currentEntries', () => $fetch(url));
-
-    return { pending, currentEntries, refresh, error };
-  } else {
-    router.replace('/404'); // Redirect to the 404 page
-    return { pending: false, currentEntries: { results: [] }, refresh: null, error: null };
-  }
-};
-
 // Fetch entries from the Notion API
 const {
-  pending,
-  currentEntries,
-  refresh,
-  error,
-} = fetchEntries();
+    pending: pending,
+    data: currentEntries,
+    refresh: refresh,
+    error: error,
+} = useLazyAsyncData('currentEntries', () =>
+    $fetch(`/api/query-user-entries?cursor=${cursor.value}&user=${user.handle.charAt(0).toUpperCase() + user.handle.slice(1)}`)
+)
+
 
 // Retrigger the API call and load more entries
 const loadMore = () => {
@@ -71,6 +56,10 @@ const handleScroll = () => {
         loadMore();
     }
 };
+
+definePageMeta({
+  middleware: 'check-user'
+})
 
 // Watch for changes in the currentEntries object
 watchEffect(() => {
