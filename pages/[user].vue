@@ -3,11 +3,7 @@
         <div class="entry-container flex flex-col">
             <Entry v-if="nextEntries" v-for="entry in nextEntries" :content="entry" />
             <Entry v-if="!pending && currentEntries" v-for="entry in currentEntries.results" :content="entry" />
-            <template v-if="pending">
-                <EntryPlaceholder />
-                <EntryPlaceholder class="opacity-70" />
-                <EntryPlaceholder class="opacity-40" />
-            </template>
+            <EntryPlaceholder v-if="pending" />
         </div>
     </div>
 </template>
@@ -25,7 +21,6 @@ import users from '~/plugins/users.js';
 const cursor = ref(undefined);
 const route = useRoute().params.user; // Get the user parameter from the current route
 const user = users.find(user => user.handle === route); // Find the user object based on the route parameter
-const router = useRouter();
 
 // Fetch entries from the Notion API
 const {
@@ -57,8 +52,8 @@ const handleScroll = () => {
     }
 };
 
+// Set page metadata and title
 useHead({
-    lang: 'en',
     title: user.name,
     meta: [
         { name: 'description', content: user.description }

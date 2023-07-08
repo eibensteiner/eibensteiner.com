@@ -15,10 +15,6 @@ body {
     @apply animate-fade-in;
 }
 
-span {
-    @apply inline-flex;
-}
-
 .button {
     @apply whitespace-nowrap rounded-full shadow-sm select-none;
 }
@@ -28,7 +24,7 @@ span {
 }
 
 .button.secondary {
-    @apply h-11 px-6 outline outline-1 bg-white outline-gray-200 hover:bg-gray-50 transition-colors;
+    @apply h-11 px-6 outline outline-1 bg-white outline-black/10 hover:bg-gray-50 transition-colors;
 }
 
 .button.secondary[disabled] {

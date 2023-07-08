@@ -9,7 +9,7 @@
                 <template v-for="title in content.properties.Title.title">
                     <span>{{ title.plain_text }}</span>
                 </template>
-                <Tooltip :text="readableDate" :direction="'top'">
+                <Tooltip :text="readableDate" :direction="'top'" class="inline">
                     <span class="ml-1.5 leading-6 text-gray-400">{{ publishedAtReadable }}</span>
                 </Tooltip>
             </span>
@@ -33,7 +33,6 @@ const publishedAtReadable = computed(() => {
     let current = Math.floor(new Date().getTime() / 1000);
     let posted = Math.floor(new Date(props.content.properties.Date.date.start).getTime() / 1000);
     let diff = current - posted;
-    let time;
 
     if (diff < 86400) {
         // Less than a day has passed:

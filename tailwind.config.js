@@ -28,6 +28,9 @@ module.exports = {
             },
             animation: {
                 'fade-in': 'fade-in .6s forwards',
+            },
+            dropShadow: {
+                '2xl': '0 20px 30px rgb(0 0 0 / 0.10)'
             }
         },
     },

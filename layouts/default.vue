@@ -1,7 +1,7 @@
 <template>
-    <div class="border-l border-r border-gray-100 mx-auto max-w-xl w-full">
-        <Navigation :handle="$route.params.user" />
+    <div class="sm:border-l sm:border-r border-gray-100 mx-auto sm:max-w-xl w-full">
+        <Navigation v-if="$route.params.user" :handle="$route.params.user" />
         <NuxtPage />
-        <ButtonScrollToTop />
+        <ButtonScrollToTop />        
     </div>
 </template>

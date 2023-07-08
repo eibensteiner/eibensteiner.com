@@ -1,5 +1,5 @@
 <template>
-     <div class="flex items-start w-full p-6 bg-white">
+     <div class="flex items-start w-full p-6 bg-white animate-pulse">
           <div data-placeholder class="flex items-center justify-center w-9 h-9 rounded-lg bg-gray-50 mr-4">
           </div>
           <div class="flex flex-col flex-1">

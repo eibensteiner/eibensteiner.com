@@ -1,6 +1,11 @@
 import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
+    app: {
+        head: {
+            htmlAttrs: { dir: 'ltr', lang: 'en' },
+        },
+    },
     css: ['@/assets/css/styles.css'],
     modules: ['@nuxtjs/tailwindcss', '@nuxt/image'],
     plugins: [
