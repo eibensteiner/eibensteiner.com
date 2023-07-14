@@ -25,7 +25,7 @@ export default defineEventHandler((event) => {
                 direction: 'descending',
             },
         ],
-        page_size: 3,
+        page_size: 20,
         // Check if the cursor is defined in the query, and convert it to a string
         start_cursor: query.cursor != 'undefined' ? query.cursor?.toString() : undefined,
     })

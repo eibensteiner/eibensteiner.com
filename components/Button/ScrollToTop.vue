@@ -13,12 +13,16 @@
 </style>
 
 <script setup>
+// Create a reactive variable to track the visibility status
 const isVisible = ref(false);
 
+// Define a function to handle scroll events
 const handleScroll = () => {
+    // Update the visibility status based on the scroll position
     isVisible.value = window.scrollY > 500;
 };
 
+// Define a function to scroll to the top of the page
 const scrollToTop = () => {
     window.scrollTo({
         top: 0,
@@ -26,10 +30,12 @@ const scrollToTop = () => {
     });
 };
 
+// Register the scroll event listener when the component is mounted
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
 });
 
+// Unregister the scroll event listener before the component is unmounted
 onBeforeUnmount(() => {
     window.removeEventListener('scroll', handleScroll);
 });
