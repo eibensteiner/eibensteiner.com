@@ -7,7 +7,11 @@ export default defineNuxtConfig({
         },
     },
     css: ['@/assets/css/styles.css'],
-    modules: ['@nuxtjs/tailwindcss', '@nuxt/image'],
+    modules: [
+        '@nuxtjs/tailwindcss',
+        '@nuxt/image',
+        '@nuxtjs/robots'
+    ],
     plugins: [
         { src: '~/plugins/vercel.js', mode: 'client' },
         { src: '~/plugins/users.js', mode: 'client' }
