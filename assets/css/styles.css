@@ -10,31 +10,38 @@
     @apply bg-gray-100;
 }
 
-
 body {
     @apply animate-fade-in;
 }
 
-.button {
+.c-button {
     @apply whitespace-nowrap rounded-full shadow-sm select-none;
 }
 
-.button.primary {
+.c-button[disabled] {
+    @apply opacity-40 pointer-events-none;
+}
+
+.c-button-primary {
     @apply h-11 px-6 bg-gray-900 text-white;
 }
 
-.button.secondary {
+.c-button-secondary {
     @apply h-11 px-6 outline outline-1 bg-white outline-black/10 hover:bg-gray-50 transition-colors;
 }
 
-.button.secondary[disabled] {
-    @apply cursor-not-allowed opacity-40 hover:bg-white;
+.c-button-overlay {
+    @apply fixed z-10 drop-shadow-2xl transition-all;
 }
 
-.button.icon-only {
+.c-button-icon-only {
     @apply px-0 w-9 h-9;
 }
 
 .c-border-transparent {
     @apply relative overflow-hidden after:border after:border-black after:border-opacity-5 after:absolute after:left-0 after:top-0 after:right-0 after:bottom-0 after:rounded-inherit;
+}
+
+.c-border-transparent > img {
+    @apply object-cover bg-gray-50 select-none;
 }
