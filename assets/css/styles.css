@@ -35,7 +35,7 @@ body {
 }
 
 .c-button-icon-only {
-    @apply px-0 w-9 h-9;
+    @apply px-0 w-10 h-10;
 }
 
 .c-border-transparent {

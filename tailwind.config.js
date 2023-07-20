@@ -9,7 +9,11 @@ module.exports = {
     theme: {
         extend: {
             height: {
-                21: '5.25rem',
+                '5.5': '1.375rem',
+                '22': '5.5rem',
+            },
+            width: {
+                '5.5': '1.375rem',
             },
             borderRadius: {
                 inherit: 'inherit',

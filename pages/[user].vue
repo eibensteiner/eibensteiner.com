@@ -1,8 +1,8 @@
 <template>
     <div class="relative min-h-screen">
         <div class="entry-container flex flex-col">
-            <Entry v-if="nextEntries" v-for="entry in nextEntries" :content="entry" />
-            <Entry v-if="!pending && currentEntries" v-for="entry in currentEntries.results" :content="entry" />
+            <Entry v-if="nextEntries" v-for="entry in nextEntries" :content="entry" :user="user"/>
+            <Entry v-if="!pending && currentEntries" v-for="entry in currentEntries.results" :content="entry" :user="user"/>
             <EntryPlaceholder v-if="pending" />
         </div>
     </div>

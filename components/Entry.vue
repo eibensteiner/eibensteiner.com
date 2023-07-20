@@ -1,9 +1,7 @@
 <template>
     <div class="w-full flex items-start p-6 bg-white">
-        <div
-            class="flex items-center justify-center w-9 h-9 outline outline-1 outline-gray-200 shadow-sm rounded-lg bg-gray-50 mr-4">
-            <span v-if="content.icon" class="select-none">{{ content.icon.emoji }}</span>
-        </div>
+        <Avatar class="mr-4" :src="`/img/users/${user.handle}.jpeg`" :width="150" :height="150" 
+                :alt="user.name" />
         <div class="flex flex-col flex-1">
             <span class="leading-6 mb-0.5">
                 <template v-for="title in content.properties.Title.title">
@@ -27,7 +25,7 @@
 </template>
 
 <script setup>
-const props = defineProps(['content'])
+const props = defineProps(['content', 'user'])
 
 const publishedAtReadable = computed(() => {
     let current = Math.floor(new Date().getTime() / 1000);
