@@ -57,7 +57,7 @@ useHead({
     title: user.name,
     meta: [
         { name: 'description', content: user.description },
-        { hid: 'og-image', property: 'og:image', content: `/img/users/${user.handle}.jpg`},
+        { hid: 'og-image', property: 'og:image', content: `/img/og/${user.handle}.jpg`},
         { hid: 't-type', name: 'twitter:card', content: 'summary_large_image' },
     ]
 })
