@@ -15,8 +15,8 @@ export default defineEventHandler((event) => {
         database_id: process.env.NOTION_POST_DATABASE!,
         filter: {
             property: 'People',
-            select: {
-                equals: user as string,
+            multi_select: {
+                contains: user as string,
             },
         },
         sorts: [

@@ -14,7 +14,8 @@ export default defineNuxtConfig({
     ],
     plugins: [
         { src: '~/plugins/vercel.js', mode: 'client' },
-        { src: '~/plugins/users.js', mode: 'client' }
+        { src: '~/plugins/users.js', mode: 'client' },
+        { src: '~/plugins/colors.js', mode: 'client' }
     ],
     image: {
         domains: ['s3.us-west-2.amazonaws.com'],
