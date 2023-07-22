@@ -1,7 +1,7 @@
 <template>
     <div class="w-full flex items-start p-6 bg-white">
-        <Avatar class="mr-4" :src="`/img/users/${user.handle}.jpeg`" :width="150" :height="150" 
-                :alt="user.name" :category="content.properties.Category.select"/>
+        <Avatar class="mr-4" :src="`/img/users/${user.handle}.jpeg`" :width="150" :height="150" :alt="user.name"
+            :category="content.properties.Category.select" />
         <div class="flex flex-col flex-1">
             <span class="leading-6 mb-0.5">
                 <template v-for="title in content.properties.Title.title">
@@ -19,7 +19,8 @@
             </span>
 
             <Image v-if="content.properties.Images.files.length != 0" class="mt-4 rounded-lg"
-                :src="content.properties.Images.files[0].file.url" :width="1000" :height="800" :alt="content.properties.Title.title[0].plain_text"></Image>
+                :src="content.properties.Images.files[0].file.url" :width="1000" :height="800"
+                :alt="content.properties.Title.title[0].plain_text"></Image>
         </div>
     </div>
 </template>
