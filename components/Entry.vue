@@ -1,6 +1,6 @@
 <template>
     <div class="w-full flex items-start p-6 bg-white">
-        <Avatar class="mr-4" :src="`/img/users/${user.handle}.jpeg`" :width="150" :height="150" :alt="user.name"
+        <Avatar class="mr-4" :src="`/img/users/${user.handle}.jpg`" :width="150" :height="150" :alt="user.name"
             :category="content.properties.Category.select" />
         <div class="flex flex-col flex-1">
             <span class="leading-6 mb-0.5">
