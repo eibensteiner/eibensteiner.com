@@ -54,7 +54,7 @@ const handleScroll = () => {
 
 // Set page metadata and title
 useHead({
-    title: user.name,
+    title: user.firstname,
     meta: [
         { name: 'description', content: user.description },
         { hid: 'og-image', property: 'og:image', content: `/img/og/${user.handle}.jpg`},

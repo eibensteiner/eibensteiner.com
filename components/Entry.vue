@@ -1,22 +1,22 @@
 <template>
-    <div class="w-full flex items-start p-7 bg-white">
-        <Avatar class="mr-4" :src="`/img/users/${user.handle}.jpg`" :width="150" :height="150" :alt="user.name"
-            :category="content.properties.Category.select" />
+    <div class="w-full flex items-start p-6 pb-8 bg-white">
+        <Avatar class="mr-4" :src="`/img/users/${user.handle}.jpg`" :width="150" :height="150" :alt="user.firstname" />
         <div class="flex flex-col flex-1">
-            <span class="leading-6 mb-0.5">
-                <template v-for="title in content.properties.Title.title">
-                    <span>{{ title.plain_text }}</span>
-                </template>
-                <Tooltip :text="readableDate" :direction="'top'" class="inline">
-                    <span class="ml-1.5 leading-6 text-gray-400">{{ publishedAtReadable }}</span>
-                </Tooltip>
-            </span>
+            <div class="my-1.5">
+                <span class="leading-6 mb-0.5">
+                    <span><nuxt-link :to="`/${user.handle}`" class="text-black">{{ user.firstname }}</nuxt-link> shared a new {{ content.properties.Category.select.name }}</span>
+                    <Tooltip :text="readableDate" :direction="'top'" class="inline">
+                        <span class="ml-1.5 leading-6 text-gray-400">{{ publishedAtReadable }}</span>
+                    </Tooltip>
+                </span>
+            </div>
 
-            <span class="font-regular leading-6 text-gray-600">
-                <template v-for="subtitle in content.properties.Description.rich_text">
-                    <span>{{ subtitle.plain_text }}</span>
-                </template>
-            </span>
+                <span class="font-regular leading-6 text-gray-600">
+                    <template v-for="title in content.properties.Title.title">
+                        <span>{{ title.plain_text }}</span>
+                    </template>
+                </span>
+
 
             <Image v-if="content.properties.Images.files.length != 0" class="mt-4 rounded-lg"
                 :src="content.properties.Images.files[0].file.url" :width="1000" :height="800"
