@@ -2,7 +2,7 @@
     <div class="relative w-10 h-10">
         <nuxt-img class="absolute left-0 top-0 w-8 h-8 rounded-full" :src="src" :alt="alt" fit="cover" format="webp"
             :width="width" :height="height" />
-        <div :class="pillBackground" class="pill">
+        <div :class="'bg-gray-100'" class="pill">
             <icon-smile v-if="category.name === 'Project'" :color="pillForeground" class="w-3.5 h-3.5" />
             <icon-family v-else-if="category.name === 'Family'" :color="pillForeground" class="w-3.5 h-3.5" />
             <icon-education v-else-if="category.name === 'Education'" :color="pillForeground" class="w-3.5 h-3.5" />

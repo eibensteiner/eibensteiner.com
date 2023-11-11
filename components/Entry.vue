@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full flex items-start p-6 bg-white">
+    <div class="w-full flex items-start p-7 bg-white">
         <Avatar class="mr-4" :src="`/img/users/${user.handle}.jpg`" :width="150" :height="150" :alt="user.name"
             :category="content.properties.Category.select" />
         <div class="flex flex-col flex-1">
