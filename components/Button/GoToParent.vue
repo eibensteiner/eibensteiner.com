@@ -1,7 +1,5 @@
 <template>
-    <Tooltip :text="'Awesomeness in the making'" :direction="'bottom'">
-        <button class="c-button c-button-secondary c-button-icon-only" @click="goToParent" disabled>←</button>
-    </Tooltip>
+    <button class="c-button c-button-secondary c-button-icon-only" @click="goToParent">←</button>
 </template>
 
 <script setup>
