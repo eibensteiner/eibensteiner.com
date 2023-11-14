@@ -10,13 +10,14 @@ export default defineNuxtConfig({
     modules: [
         '@nuxtjs/tailwindcss',
         '@nuxt/image',
+        '@nuxt/content',
         '@nuxtjs/robots'
     ],
     plugins: [
-        { src: '~/plugins/vercel.js', mode: 'client' },
-        { src: '~/plugins/users.js', mode: 'client' }
+        '~/plugins/users.js'
     ],
     image: {
         domains: ['s3.us-west-2.amazonaws.com'],
-    }
+    },
+
 })
