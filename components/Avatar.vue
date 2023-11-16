@@ -12,5 +12,5 @@
 </style>
 
 <script setup>
-const props = defineProps(['src', 'alt', 'width', 'height'])
+const props = defineProps(['src', 'alt', 'width', 'height', 'isPinned'])
 </script>

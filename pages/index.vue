@@ -8,7 +8,7 @@
 
 <style>
 .entry-container>*:not(:last-child) {
-    @apply border-b border-gray-100;
+  @apply border-b border-gray-100;
 }
 </style>
 

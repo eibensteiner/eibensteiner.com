@@ -1,8 +1,10 @@
 <template>
-  <ContentRenderer :value="article">
-    <ContentRendererMarkdown :value="article" />
-  </ContentRenderer>
-  <pre>{{ articles }}</pre>
+  <div class="relative">
+    <ContentRenderer :value="article">
+      <ContentRendererMarkdown :value="article" />
+    </ContentRenderer>
+    <pre>{{ articles }}</pre>
+  </div>
 </template>
 
 <script setup>
