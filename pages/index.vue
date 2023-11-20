@@ -1,15 +1,11 @@
 <template>
   <div class="relative">
     <!-- Tab buttons -->
-    <nav class="w-full h-22 border-b border-gray-100 sticky top-0 bg-white z-20 flex items-center justify-center px-6">
-      <button class="w-28 h-10 rounded-full" :class="activeTab === 'recents' ? 'bg-gray-100' : 'text-gray-600'" @click="setActiveTab('recents')">Recents</button>
-      <button class="w-28 h-10 rounded-full" :class="activeTab === 'stories' ? 'bg-gray-100' : 'text-gray-600'" @click="setActiveTab('stories')">Stories</button>
-      <button class="w-28 h-10 rounded-full" :class="activeTab === 'thoughts' ? 'bg-gray-100' : 'text-gray-600'" @click="setActiveTab('thoughts')">Thoughts</button>
-    </nav>
+    <NavigationTabs :activeTab="activeTab" @update:activeTab="setActiveTab" />
 
     <!-- Entries list -->
     <div class="entry-container flex flex-col">
-      <Entry v-for="article in filteredArticles" :key="article.slug" :content="article" :showPinned="false"/>
+      <Entry v-for="article in filteredArticles" :key="article.slug" :content="article" :showPinned="false" />
     </div>
   </div>
 </template>
