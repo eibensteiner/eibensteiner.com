@@ -2,7 +2,7 @@
   <div class="relative">
     <div class="entry-container flex flex-col">
       <Entry v-if="pinnedArticle" :content="pinnedArticle" :isPinned="true" />
-      <Entry v-if="articles" v-for="article in articles" :content="article" />
+      <Entry v-if="articles" v-for="article in articles" :content="article"/>
       <!--<pre v-for="article in articles">{{ article }}</pre>-->
     </div>
   </div>

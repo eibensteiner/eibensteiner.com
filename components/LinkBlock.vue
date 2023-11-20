@@ -1,6 +1,6 @@
 <template>
     <nuxt-link :to="link" class="mt-2 h-22 flex border rounded-xl shadow-sm overflow-hidden">
-        <div class="h-full flex flex-col flex-1 p-5">
+        <div class="h-full flex flex-col justify-center flex-1 p-5">
             <span class="mb-0.5">{{ title }}</span>
             <span class=" text-gray-600">{{ readingTime }}</span>
         </div>
