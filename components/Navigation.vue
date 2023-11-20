@@ -4,3 +4,8 @@
         <span class="ml-4">@{{ $route.params }}</span>
     </nav>
 </template>
+
+<script setup>
+const route = useRoute();
+const params = route.params;
+</script>

@@ -1,31 +1,40 @@
 <template>
     <div class="w-full flex items-start p-6 pb-8 bg-white">
-        <Avatar class="mr-4" :src="`/img/users/${content.author}.jpg`" :width="150" :height="150" :alt="content.author" :isPinned="true"/>
+        <Avatar class="mr-4" :width="150" :height="150" :user="content.author" :isPinned="content.pinned" />
         <div class="flex flex-col flex-1">
-            <div class="my-1.5">
-                <span class="leading-6 mb-0.5">
-                    <span><nuxt-link :to="`/${content.author}`" class="text-black">{{ content.author }}</nuxt-link> shared a
-                        new {{ entryType }}</span>
-                    <Tooltip :text="readableDate" :direction="'top'" class="inline">
-                        <span class="ml-1.5 leading-6 text-gray-400">{{ publishedAtReadable }}</span>
-                    </Tooltip>
-                </span>
-            </div>
+            <span class="leading-6 mb-0.5">
+                <nuxt-link :to="`/${content.author}`" class="text-black">{{ user.firstname }}</nuxt-link>
+                <span> shared a {{ entryType }}</span>
+
+                <Tooltip :text="readableDate" :direction="'top'" class="inline">
+                    <span class="ml-1.5 leading-6 text-gray-400">{{ publishedAtReadable }}</span>
+                </Tooltip>
+            </span>
 
             <span v-if="content.note" class="font-regular leading-6 text-gray-600">{{ content.note }}</span>
-            <link-block v-if="!content.note" :link="`/${content.author}/${content.slug}`" :title="content.title"></link-block>
-            <!--<Image v-if="content.properties.Images.files.length != 0" class="mt-4 rounded-lg"
-                :src="content.properties.Images.files[0].file.url" :width="1000" :height="800"
-                :alt="content.properties.Title.title[0].plain_text"></Image>-->
+            <link-block v-if="!content.note" :link="`/${content.author}/${content.slug}`" :title="content.title"
+                :img="content.slug" :readingTime="readingTime"></link-block>
         </div>
     </div>
 </template>
 
 <script setup>
-const props = defineProps(['content', 'isPinned'])
+import users from '~/constants/users';
+import extractTextFromArticle from '~/utils/extractTextFromArticle';
+
+const props = defineProps(['content', 'isPinned']);
+const user = users.find(user => user.handle === props.content.author);
+
+const readingTime = computed(() => {
+    const wordsPerMinute = 200; // Average reading speed
+    const textContent = extractTextFromArticle(props.content.body);
+    const words = textContent.split(/\s+/).length;
+    const time = Math.ceil(words / wordsPerMinute);
+    return time <= 1 ? `${time} min read` : `${time} mins read`;
+});
 
 const entryType = computed(() => {
-    if(props.content.note) {
+    if (props.content.note) {
         return 'thought'
     } else return 'story'
 })
@@ -54,4 +63,5 @@ const readableDate = computed(() => {
     let date = new Date(props.content.createdAt)
     return date.toLocaleString('en-US', { dateStyle: 'medium' })
 })
+
 </script>

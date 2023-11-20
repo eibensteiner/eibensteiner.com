@@ -13,9 +13,6 @@ export default defineNuxtConfig({
         '@nuxt/content',
         '@nuxtjs/robots'
     ],
-    plugins: [
-        '~/plugins/users.js'
-    ],
     image: {
         domains: ['s3.us-west-2.amazonaws.com'],
     },

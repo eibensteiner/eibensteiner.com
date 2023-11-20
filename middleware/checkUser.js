@@ -1,4 +1,4 @@
-import users from '~/plugins/users.js';
+import users from '~/constants/users.js';
 
 export default function ({ params }) {
   // Perform your condition check
