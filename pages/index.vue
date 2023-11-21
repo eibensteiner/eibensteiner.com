@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen sm:border-l sm:border-r border-gray-100 mx-auto sm:max-w-xl w-full relative">
+  <div class="min-h-screen sm:border-l sm:border-r border-neutral-100 mx-auto sm:max-w-xl w-full relative">
     <NavigationTabs :activeTab="activeTab" @update:activeTab="setActiveTab" />
 
     <!-- Entries list -->
@@ -12,7 +12,7 @@
 
 <style>
 .feed>*:not(:last-child) {
-  @apply border-b border-gray-100;
+  @apply border-b border-neutral-100;
 }
 </style>
 

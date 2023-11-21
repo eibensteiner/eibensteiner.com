@@ -1,12 +1,23 @@
 <template>
-  <div class="min-h-screen sm:border-l sm:border-r border-gray-100 mx-auto sm:max-w-xl w-full relative">
+  <div class="min-h-screen sm:border-l sm:border-r border-neutral-100 mx-auto sm:max-w-xl w-full relative">
     <Navigation :user="user" :article="article"/>
-    <ButtonScrollToTop /> 
-    <ContentRenderer :value="article">
+    <ButtonScrollToTop />
+    <main class="p-6">
+      <ContentRenderer :value="article">
       <ContentRendererMarkdown :value="article" />
     </ContentRenderer>
+    </main>
   </div>
 </template>
+
+<style>
+p:not(:last-child) {
+  @apply mb-6;
+}
+img {
+  @apply w-full;
+}
+</style>
 
 <script setup>
 import users from '~/constants/users';

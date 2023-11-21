@@ -7,7 +7,7 @@
 }
 
 *::selection {
-    @apply bg-gray-100;
+    @apply bg-neutral-100;
 }
 
 body {
@@ -23,11 +23,11 @@ body {
 }
 
 .c-button-primary {
-    @apply h-11 px-6 bg-gray-900 text-white;
+    @apply h-11 px-6 bg-neutral-900 text-white;
 }
 
 .c-button-secondary {
-    @apply h-11 px-6 outline outline-1 bg-white outline-black/10 hover:bg-gray-50 transition-colors;
+    @apply h-11 px-6 outline outline-1 bg-white outline-neutral-700/10 hover:bg-neutral-50 transition-colors;
 }
 
 .c-button-overlay {
@@ -43,5 +43,5 @@ body {
 }
 
 .c-border-transparent > img {
-    @apply object-cover bg-gray-50 select-none;
+    @apply object-cover bg-neutral-50 select-none;
 }
