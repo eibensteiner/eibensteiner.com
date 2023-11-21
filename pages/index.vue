@@ -1,17 +1,17 @@
 <template>
-  <div class="relative">
-    <!-- Tab buttons -->
+  <div class="min-h-screen sm:border-l sm:border-r border-gray-100 mx-auto sm:max-w-xl w-full relative">
     <NavigationTabs :activeTab="activeTab" @update:activeTab="setActiveTab" />
 
     <!-- Entries list -->
-    <div class="entry-container flex flex-col">
+    <div class="feed flex flex-col">
+      <ButtonScrollToTop />
       <Entry v-for="article in filteredArticles" :key="article.slug" :content="article" :showPinned="false" />
     </div>
   </div>
 </template>
 
 <style>
-.entry-container>*:not(:last-child) {
+.feed>*:not(:last-child) {
   @apply border-b border-gray-100;
 }
 </style>

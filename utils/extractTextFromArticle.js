@@ -1,4 +1,4 @@
-function extractTextFromContent(content) {
+export const extractTextFromContent = (content) => {
     if (typeof content === 'string') {
         return content;
     }

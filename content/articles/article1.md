@@ -1,7 +1,7 @@
 ---
 title: Article about me
 slug: article-about-me-1
-pinned: true
+isPinned: false
 createdAt: 2023-11-16
 thought: This is a description for the article about me
 type: thought
