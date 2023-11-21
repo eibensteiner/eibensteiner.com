@@ -1,5 +1,5 @@
 <template>
-    <nav class="w-full h-22 border-b border-neutral-100 sticky top-0 bg-white z-20 flex items-center px-6">
+    <nav class="w-full h-22 border-b border-neutral-100 sticky top-0 bg-white z-20 flex items-center px-7">
         <ButtonGoToParent />
         <span v-if="user && !article" class="ml-4">
             <span class="text-neutral-900">{{ user.firstname }} {{ user.lastname }}</span>

@@ -21,9 +21,23 @@
 import users from '~/constants/users';
 
 const route = useRoute();
-const allArticles = await queryContent('articles').where({ author: route.params.author }).find();
+const allArticles = await queryContent('articles').where({ author: route.params.author }).only(['author', 'body', 'createdAt', 'type', 'thought', 'slug', 'isPinned', 'title']).find();
 const user = users.find(user => user.handle === route.params.author);
 
 const pinnedArticles = computed(() => allArticles.filter(article => article.isPinned));
 const unpinnedArticles = computed(() => allArticles.filter(article => !article.isPinned));
+
+// Set page metadata and title
+useHead({
+    title: user.fistname,
+    meta: [
+        { name: 'description', content: user.description },
+        { hid: 'og-image', property: 'og:image', content: `/img/og/${user.handle}.jpg`},
+        { hid: 't-type', name: 'twitter:card', content: 'summary_large_image' },
+    ]
+})
+
+definePageMeta({
+    middleware: 'check-user',
+})
 </script>

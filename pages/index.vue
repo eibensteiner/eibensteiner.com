@@ -1,11 +1,10 @@
 <template>
   <div class="min-h-screen sm:border-l sm:border-r border-neutral-100 mx-auto sm:max-w-xl w-full relative">
     <NavigationTabs :activeTab="activeTab" @update:activeTab="setActiveTab" />
-
     <!-- Entries list -->
     <div class="feed flex flex-col">
       <ButtonScrollToTop />
-      <Entry v-for="article in filteredArticles" :key="article.slug" :content="article" :showPinned="false" />
+      <Entry v-for="article in filteredArticles" :key="article.slug" :content="article" />
     </div>
   </div>
 </template>
@@ -22,7 +21,8 @@ const articles = ref([]);
 
 // Fetch articles on mounted
 onMounted(async () => {
-  articles.value = await queryContent('articles').find();
+  articles.value = await queryContent('articles').only(['author', 'body', 'createdAt', 'type', 'thought', 'slug', 'isPinned', 'title']).find();
+  console.log(articles.value);
 });
 
 // Method to set the active tab
@@ -70,5 +70,14 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('keydown', handleKeyShortcuts);
 });
+
+// Set page metadata and title
+useHead({
+    title: 'eibensteiner.com',
+    meta: [
+        { name: 'description', content: 'Test test' },
+        { hid: 't-type', name: 'twitter:card', content: 'summary_large_image' },
+    ]
+})
 
 </script>
