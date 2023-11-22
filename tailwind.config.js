@@ -1,11 +1,18 @@
 module.exports = {
     content: [
-        './components/**/*.{js,vue,ts}',
-        './layouts/**/*.vue',
+        './components/**/*.vue',
         './pages/**/*.vue',
-        './plugins/**/*.{js,ts}',
-        './nuxt.config.{js,ts}',
+        './plugins/**/*.js',
+        './nuxt.config.js',
     ],
+    purge: {
+        content: [
+            './components/**/*.vue',
+            './pages/**/*.vue',
+            './plugins/**/*.js',
+            'nuxt.config.js'
+        ],
+    },
     theme: {
         extend: {
             height: {
@@ -15,6 +22,9 @@ module.exports = {
             width: {
                 '5.5': '1.375rem',
             },
+            maxWidth: {
+                '14': '3.5rem',
+            },
             borderRadius: {
                 inherit: 'inherit',
             },
@@ -22,7 +32,7 @@ module.exports = {
                 sans: ['Inter var', 'ui-sans-serif', 'system-ui'],
             },
             fontWeight: {
-                'normal-medium': '450',
+                '450': 450,
             },
             keyframes: {
                 'fade-in': {
@@ -38,5 +48,4 @@ module.exports = {
             }
         },
     },
-    plugins: [],
 }

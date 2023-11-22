@@ -1,14 +1,18 @@
-export default [
+const users = [
     {
         'handle': 'dominik',
-        'name': 'Dominik Eibensteiner',
+        'firstname': 'Dominik',
+        'lastname': 'Eibensteiner',
         'email': 'dominik.eibensteiner@outlook.com',
         'description': 'Product Designer from Austria',
     },
     {
         'handle': 'sarah',
-        'name': 'Sarah Eibensteiner',
+        'firstname': 'Sarah',
+        'lastname': 'Eibensteiner',
         'email': 'sarah@eibensteiner.me',
         'description': 'Frontend Developer from Austria',
     }
-]
+];
+
+export default users;

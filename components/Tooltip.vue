@@ -7,7 +7,7 @@
 
 <style>
 .tooltip {
-    @apply bg-gray-900 text-white absolute whitespace-nowrap h-7 flex items-center px-2.5 text-sm rounded-md shadow-sm select-none opacity-0 invisible scale-95 transition-all;
+    @apply bg-neutral-900 text-white absolute whitespace-nowrap h-7 flex items-center px-2.5 text-sm rounded-md shadow-sm select-none opacity-0 invisible scale-95 transition-all z-10;
 }
 
 .direction-top {
@@ -20,11 +20,11 @@
 
 @media (hover: hover) {
     .tooltip-wrapper:hover .direction-top {
-        @apply opacity-100 visible -translate-y-full scale-100;
+        @apply opacity-100 visible -translate-y-full scale-100 delay-300;
     }
 
     .tooltip-wrapper:hover .direction-bottom {
-        @apply opacity-100 visible translate-y-full scale-100;
+        @apply opacity-100 visible translate-y-full scale-100 delay-300;
     }
 }
 </style>
