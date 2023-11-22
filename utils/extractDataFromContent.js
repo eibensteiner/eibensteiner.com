@@ -1,4 +1,4 @@
-// Extract all the images from an article and push them in an array
+// Extract all the images from an entry and push them in an array
 export const extractImagesFromContent = (data) => {
     let imageSources = [];
 
@@ -27,7 +27,7 @@ export const extractImagesFromContent = (data) => {
     return imageSources;
 }
 
-// Extract all the text from an article and merge it together
+// Extract all the text from an entry and merge it together
 export const extractTextFromContent = (data) => {
     if (typeof data === 'string') {
         return data;

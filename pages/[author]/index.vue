@@ -3,10 +3,10 @@
     <Navigation :user="user"/>
     <div class="feed flex flex-col">
       <ButtonScrollToTop />
-      <Entry v-for="article in pinnedArticles" :key="article.id" :content="article" :isPinned="true" />
+      <Entry v-for="entry in pinnedentries" :key="entry.id" :content="entry" :isPinned="true" />
 
-      <!-- Render unpinned articles -->
-      <Entry v-for="article in unpinnedArticles" :key="article.id" :content="article" />
+      <!-- Render unpinned entries -->
+      <Entry v-for="entry in unpinnedentries" :key="entry.id" :content="entry" />
     </div>
   </div>
 </template>
@@ -21,11 +21,11 @@
 import users from '~/constants/users';
 
 const route = useRoute();
-const allArticles = await queryContent('articles').where({ author: route.params.author }).only(['author', 'body', 'createdAt', 'type', 'thought', 'slug', 'isPinned', 'title']).find();
+const allentries = await queryContent('entries').where({ author: route.params.author }).only(['author', 'body', 'createdAt', 'type', 'thought', 'slug', 'isPinned', 'title']).find();
 const user = users.find(user => user.handle === route.params.author);
 
-const pinnedArticles = computed(() => allArticles.filter(article => article.isPinned));
-const unpinnedArticles = computed(() => allArticles.filter(article => !article.isPinned));
+const pinnedentries = computed(() => allentries.filter(entry => entry.isPinned));
+const unpinnedentries = computed(() => allentries.filter(entry => !entry.isPinned));
 
 // Set page metadata and title
 useHead({

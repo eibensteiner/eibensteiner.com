@@ -1,6 +1,6 @@
 ---
-title: Article about Dodo
-slug: article-about-me-4
+title: entry about Dodo
+slug: entry-about-me-4
 createdAt: 2023-10-14
 type: story
 img: https://images.unsplash.com/photo-1580752300992-559f8e0734e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80
@@ -20,7 +20,7 @@ markdown = Redcarpet.new("Hello World!")
 puts markdown.to_html
 ```
 
-![my image](/img/articles/IMG_1704.jpeg)
+![my image](/img/entries/IMG_1704.jpeg)
 
 Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
 

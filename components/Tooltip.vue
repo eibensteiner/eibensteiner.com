@@ -20,11 +20,11 @@
 
 @media (hover: hover) {
     .tooltip-wrapper:hover .direction-top {
-        @apply opacity-100 visible -translate-y-full scale-100;
+        @apply opacity-100 visible -translate-y-full scale-100 delay-300;
     }
 
     .tooltip-wrapper:hover .direction-bottom {
-        @apply opacity-100 visible translate-y-full scale-100;
+        @apply opacity-100 visible translate-y-full scale-100 delay-300;
     }
 }
 </style>

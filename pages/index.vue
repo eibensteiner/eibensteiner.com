@@ -4,7 +4,7 @@
     <!-- Entries list -->
     <div class="feed flex flex-col">
       <ButtonScrollToTop />
-      <Entry v-for="article in filteredArticles" :key="article.slug" :content="article" />
+      <Entry v-for="entry in filteredentries" :key="entry.slug" :content="entry" />
     </div>
   </div>
 </template>
@@ -17,12 +17,12 @@
 
 <script setup>
 const activeTab = ref('recents');
-const articles = ref([]);
+const entries = ref([]);
 
-// Fetch articles on mounted
+// Fetch entries on mounted
 onMounted(async () => {
-  articles.value = await queryContent('articles').only(['author', 'body', 'createdAt', 'type', 'thought', 'slug', 'isPinned', 'title']).find();
-  console.log(articles.value);
+  entries.value = await queryContent('entries').only(['author', 'body', 'createdAt', 'type', 'thought', 'slug', 'isPinned', 'title']).find();
+  console.log(entries.value);
 });
 
 // Method to set the active tab
@@ -30,17 +30,17 @@ const setActiveTab = (tab) => {
   activeTab.value = tab;
 };
 
-// Computed property to filter articles based on the active tab
-const filteredArticles = computed(() => {
+// Computed property to filter entries based on the active tab
+const filteredentries = computed(() => {
   switch (activeTab.value) {
     case 'recents':
-      return articles.value;
+      return entries.value;
     case 'stories':
-      return articles.value.filter(article => article.type === 'story');
+      return entries.value.filter(entry => entry.type === 'story');
     case 'thoughts':
-      return articles.value.filter(article => article.type === 'thought');
+      return entries.value.filter(entry => entry.type === 'thought');
     default:
-      return articles.value;
+      return entries.value;
   }
 });
 
