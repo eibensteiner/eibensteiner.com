@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen sm:border-l sm:border-r border-neutral-100 mx-auto sm:max-w-xl w-full relative">
-    <NavigationTabs :activeTab="activeTab" @update:activeTab="setActiveTab" />
+    <Navigation :activeTab="activeTab" :tabs="tabs" @update:activeTab="setActiveTab" />
     <!-- Entries list -->
     <div class="feed flex flex-col">
       <ButtonScrollToTop />
@@ -16,13 +16,16 @@
 </style>
 
 <script setup>
-const activeTab = ref('recents');
-const entries = ref([]);
+const activeTab = ref('recents'); // Which tab should be initially set to be active?
 
-// Fetch entries on mounted
-onMounted(async () => {
-  entries.value = await queryContent('entries').only(['author', 'body', 'createdAt', 'type', 'thought', 'slug', 'isPinned', 'title']).find();
-  console.log(entries.value);
+const tabs = [
+    { id: 'recents', label: 'Recents' },
+    { id: 'stories', label: 'Stories' },
+    { id: 'thoughts', label: 'Thoughts' }
+];
+
+const { data: entries } = useAsyncData(() => {
+  return queryContent('entries').only(['author', 'body', 'createdAt', 'type', 'thought', 'slug', 'isPinned', 'title']).find();
 });
 
 // Method to set the active tab
