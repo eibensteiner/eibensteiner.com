@@ -16,7 +16,7 @@
             </span>
 
             <span v-if="content.thought" class="font-regular leading-6 text-neutral-700">{{ content.thought }}</span>
-            <link-block v-if="!content.thought" :content="content"></link-block>
+            <link-block v-else :content="content" class="mt-2"></link-block>
         </div>
     </div>
 </template>

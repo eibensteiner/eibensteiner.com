@@ -4,8 +4,6 @@
     <div class="feed flex flex-col">
       <ButtonScrollToTop />
       <Entry v-for="entry in pinnedentries" :key="entry.id" :content="entry" :isPinned="true" />
-
-      <!-- Render unpinned entries -->
       <Entry v-for="entry in unpinnedentries" :key="entry.id" :content="entry" />
     </div>
   </div>
@@ -23,7 +21,6 @@ import users from '~/constants/users';
 const route = useRoute();
 const allentries = await queryContent('entries').where({ author: route.params.author }).only(['author', 'body', 'createdAt', 'type', 'thought', 'slug', 'isPinned', 'title']).find();
 const user = users.find(user => user.handle === route.params.author);
-
 const pinnedentries = computed(() => allentries.filter(entry => entry.isPinned));
 const unpinnedentries = computed(() => allentries.filter(entry => !entry.isPinned));
 

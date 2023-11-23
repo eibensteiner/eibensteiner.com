@@ -1,7 +1,6 @@
 <template>
   <div class="min-h-screen sm:border-l sm:border-r border-neutral-100 mx-auto sm:max-w-xl w-full relative">
     <Navigation :activeTab="activeTab" :tabs="tabs" @update:activeTab="setActiveTab" />
-    <!-- Entries list -->
     <div class="feed flex flex-col">
       <ButtonScrollToTop />
       <Entry v-for="entry in filteredentries" :key="entry.slug" :content="entry" />
