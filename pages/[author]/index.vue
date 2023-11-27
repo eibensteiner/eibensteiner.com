@@ -26,7 +26,7 @@ const unpinnedentries = computed(() => allentries.filter(entry => !entry.isPinne
 
 // Set page metadata and title
 useHead({
-    title: user.fistname,
+    title: `${user.firstname} ${user.lastname}`,
     meta: [
         { name: 'description', content: user.description },
         { hid: 'og-image', property: 'og:image', content: `/img/og/${user.handle}.jpg`},

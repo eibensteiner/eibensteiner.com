@@ -75,7 +75,7 @@ onUnmounted(() => {
 
 // Set page metadata and title
 useHead({
-    title: 'eibensteiner.com',
+    title: 'Eibensteiner',
     meta: [
         { name: 'description', content: 'Test test' },
         { hid: 't-type', name: 'twitter:card', content: 'summary_large_image' },

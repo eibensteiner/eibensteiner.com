@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full flex items-start py-6 px-7 bg-white">
+    <div class="flex items-start w-full py-6 px-7 overflow-hidden bg-white">
         <div class="h-12 my-px flex items-center justify-center mr-4">
             <Avatar :width="150" :height="150" :user="content.author" :isPinned="isPinned" />
         </div>
@@ -10,9 +10,10 @@
                 <span v-else class="text-neutral-700">{{ user.firstname }}</span>
                 <span class="text-neutral-700"> shared a {{ content.type }}</span>
 
-                <Tooltip :text="absoluteDate" :direction="'bottom'" class="inline">
+                <Tooltip v-if="!isPinned" :text="absoluteDate" :direction="'bottom'" class="inline">
                     <span class="ml-1.5 text-neutral-500 cursor-default">{{ relativeDate }}</span>
                 </Tooltip>
+                <span v-else class="ml-1.5 text-neutral-500">Pinned</span>
             </span>
 
             <span v-if="content.thought" class="font-regular leading-6 text-neutral-700">{{ content.thought }}</span>
