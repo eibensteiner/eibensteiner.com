@@ -25,20 +25,28 @@
 </template>
 
 <style>
-p {
+main > div p {
   @apply text-neutral-700;
 }
 
-h2 {
-  @apply mb-4
+main > div h2 {
+  @apply mb-4 mt-8;
 }
 
-p:not(:last-child) {
-  @apply mb-8;
+main > div p:not(:last-child) {
+  @apply mb-2;
 }
 
-img {
-  @apply w-full outline outline-1 -outline-offset-1 outline-neutral-700/10 rounded-md;
+main > div img {
+  @apply w-full outline outline-1 -outline-offset-1 outline-neutral-700/10 rounded-md mt-8;
+}
+
+main > div blockquote p {
+  @apply text-neutral-500 italic;
+}
+
+main > div blockquote {
+  @apply mt-4 pl-4 border-l-2;
 }
 </style>
 
