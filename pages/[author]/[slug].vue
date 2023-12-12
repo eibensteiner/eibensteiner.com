@@ -21,7 +21,7 @@
     </main>
     <footer class="py-6 px-7">
       <link-block v-if="nextentry" :content="nextentry"></link-block>
-      <link-block v-else :content="preventry"></link-block>
+      <link-block v-if="preventry" :content="preventry"></link-block>
     </footer>
   </div>
 </template>

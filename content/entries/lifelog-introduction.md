@@ -1,6 +1,6 @@
 ---
 title: Introducing our micro-lifelog
-slug: twitter-to-self-hosted
+slug: introducing-our-lifelog
 createdAt: 2023-11-16
 type: story
 author: dominik
