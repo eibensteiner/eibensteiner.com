@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen sm:border-l sm:border-r border-neutral-100 mx-auto sm:max-w-xl w-full relative">
-    <Navigation :user="user"/>
+    <Navigation :user="user" />
     <div class="feed flex flex-col">
       <ButtonScrollToTop />
       <Entry v-for="entry in pinnedentries" :key="entry.id" :content="entry" :isPinned="true" />
@@ -19,22 +19,22 @@
 import users from '~/constants/users';
 
 const route = useRoute();
-const allentries = await queryContent('entries').where({ author: route.params.author }).only(['author', 'body', 'createdAt', 'type', 'thought', 'slug', 'isPinned', 'title', 'image', '_path']).find();
+const allentries = await queryContent('entries').where({ author: route.params.author }).only(['author', 'body', 'createdAt', 'type', 'thought', 'slug', 'isPinned', 'title', 'image', '_path']).sort({ createdAt: -1 }).find();
 const user = users.find(user => user.handle === route.params.author);
 const pinnedentries = computed(() => allentries.filter(entry => entry.isPinned));
 const unpinnedentries = computed(() => allentries.filter(entry => !entry.isPinned));
 
 // Set page metadata and title
 useHead({
-    title: `${user.firstname} ${user.lastname}`,
-    meta: [
-        { name: 'description', content: user.description },
-        { hid: 'og-image', property: 'og:image', content: `/img/og/${user.handle}.jpg`},
-        { hid: 't-type', name: 'twitter:card', content: 'summary_large_image' },
-    ]
+  title: `${user.firstname} ${user.lastname}`,
+  meta: [
+    { name: 'description', content: user.description },
+    { hid: 'og-image', property: 'og:image', content: `/img/og/${user.handle}.jpg` },
+    { hid: 't-type', name: 'twitter:card', content: 'summary_large_image' },
+  ]
 })
 
 definePageMeta({
-    middleware: 'check-user',
+  middleware: 'check-user',
 })
 </script>
