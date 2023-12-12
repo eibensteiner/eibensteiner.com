@@ -16,11 +16,22 @@
                 <span v-else class="ml-1.5 text-neutral-500">Pinned</span>
             </span>
 
-            <span v-if="content.thought" class="font-regular leading-6 text-neutral-700">{{ content.thought }}</span>
+            <template v-if="content.thought">
+                <span class="font-regular leading-6 text-neutral-700" v-html="content.thought"></span>
+                <nuxt-img v-if="content.image" class="mt-4 w-full outline outline-1 -outline-offset-1 outline-neutral-700/10 rounded-md bg-neutral-100" :src="content.image" fit="fill" format="webp" :alt="content.title"
+                />
+            </template>
+
             <link-block v-else :content="content" class="mt-2"></link-block>
         </div>
     </div>
 </template>
+
+<style>
+span a {
+    @apply text-neutral-900 underline decoration-dashed decoration-neutral-300 underline-offset-4 decoration-1 hover:text-black hover:decoration-neutral-400 transition-colors;
+}
+</style>
 
 <script setup>
 import users from '~/constants/users';

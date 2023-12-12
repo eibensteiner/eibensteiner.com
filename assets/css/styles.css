@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+    .font-medium {
+        font-variation-settings: 'wght' 450;
+    }
+}
+
 * {
     @apply antialiased;
 }

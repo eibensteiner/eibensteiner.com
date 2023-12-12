@@ -24,7 +24,7 @@ const tabs = [
 ];
 
 const { data: entries } = useAsyncData(() => {
-  return queryContent('entries').only(['author', 'body', 'createdAt', 'type', 'thought', 'slug', 'isPinned', 'title']).find();
+  return queryContent('entries').only(['author', 'body', 'createdAt', 'type', 'thought', 'slug', 'isPinned', 'title', 'image']).find();
 });
 
 // Method to set the active tab

@@ -6,18 +6,19 @@
             <span class="text-neutral-700">{{ readingTime }}</span>
         </div>
         <div v-if="imageSources" class="h-full w-24 bg-neutral-100 flex items-center justify-center relative select-none">
-            <nuxt-img class="image -rotate-6 group-hover:-rotate-12" :src="imageSources[0]" fit="cover" format="webp"
-                quality="20" width="104" height="104" />
-            <nuxt-img v-if="imageSources.length > 1" class="image rotate-3 group-hover:rotate-6" :src="imageSources[1]"
-                fit="cover" format="webp" quality="20" width="104" height="104" />
+            <div class="group-hover:scale-105 transition-transform">
+                <nuxt-img class="image -rotate-6 group-hover:-rotate-12 z-10" :src="imageSources[0]" fit="cover" format="webp"
+                    quality="20" width="104" height="104" />
+                <nuxt-img v-if="imageSources.length > 1" class="image rotate-3 group-hover:rotate-6" :src="imageSources[1]"
+                    fit="cover" format="webp" quality="20" width="104" height="104" />
+            </div>
         </div>
-        
     </nuxt-link>
 </template>
 
 <style>
 .image {
-    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-14 w-auto max-h-14 h-auto outline outline-1 -outline-offset-1 outline-neutral-700/10 rounded-md transition-transform shadow-sm z-10;
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-14 w-auto max-h-14 h-auto outline outline-1 -outline-offset-1 outline-neutral-700/10 rounded-md transition-transform shadow-sm;
 }
 </style>
 

@@ -3,9 +3,11 @@
     <Navigation :user="user" :entry="entry" />
     <main class="py-6 px-7 border-b border-neutral-100">
       <ButtonScrollToTop />
-      <ContentRenderer :value="entry">
-        <ContentRendererMarkdown :value="entry" />
-      </ContentRenderer>
+      <div class="content">
+        <ContentRenderer :value="entry">
+          <ContentRendererMarkdown :value="entry" />
+        </ContentRenderer>
+      </div>
       <div class="flex mt-8">
         <div class="h-12 my-px flex items-center justify-center mr-4">
           <Avatar :width="150" :height="150" :user="entry.author" :isPinned="entry.isPinned" />
@@ -19,35 +21,38 @@
     </main>
     <footer class="py-6 px-7">
       <link-block v-if="nextentry" :content="nextentry"></link-block>
-      <link-block v-if="preventry" :content="preventry"></link-block>
+      <link-block v-else :content="preventry"></link-block>
     </footer>
   </div>
 </template>
 
 <style>
-main > div p {
+.content p {
   @apply text-neutral-700;
 }
 
-main > div h2 {
-  @apply mb-4 mt-8;
+.content p:not(:last-child) {
+  @apply mb-4;
 }
 
-main > div p:not(:last-child) {
-  @apply mb-2;
+.content p strong,
+.content p em,
+.content blockquote p {
+  @apply text-neutral-900 font-serif italic;
 }
 
-main > div img {
-  @apply w-full outline outline-1 -outline-offset-1 outline-neutral-700/10 rounded-md mt-8;
+.content p a {
+  @apply text-neutral-900 underline decoration-dashed decoration-neutral-300 underline-offset-4 decoration-1 hover:text-black hover:decoration-neutral-400 transition-colors;
 }
 
-main > div blockquote p {
-  @apply text-neutral-500 italic;
+.content img {
+  @apply w-full outline outline-1 -outline-offset-1 outline-neutral-700/10 rounded-md my-8 bg-neutral-100;
 }
 
-main > div blockquote {
-  @apply mt-4 pl-4 border-l-2;
+.content blockquote {
+  @apply my-5 pl-4 border-l-2 border-neutral-600;
 }
+
 </style>
 
 <script setup>
@@ -62,11 +67,11 @@ const user = users.find(user => user.handle === route.params.author);
 
 // Set page metadata and title
 useHead({
-    title: entry.title,
-    meta: [
-        { name: 'description', content: user.description },
-        { hid: 'og-image', property: 'og:image', content: `/img/og/${user.handle}.jpg`},
-        { hid: 't-type', name: 'twitter:card', content: 'summary_large_image' },
-    ]
+  title: entry.title,
+  meta: [
+    { name: 'description', content: user.description },
+    { hid: 'og-image', property: 'og:image', content: `/img/og/${user.handle}.jpg` },
+    { hid: 't-type', name: 'twitter:card', content: 'summary_large_image' },
+  ]
 })
 </script>
