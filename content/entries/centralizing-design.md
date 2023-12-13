@@ -6,6 +6,8 @@ type: story
 author: dominik
 ---
 
+> This is a shortened version. You can find the original slightly longer story on [read.cv](https://read.cv/eibensteiner/6jjRV21blisvTauIb47P).
+
 As Blockpit began to experience rapid growth, it became crucial to organize our creative chaos. We took a major step by setting up centralized Figma and Notion spaces, making our ideas and guidelines globally accessible. This move was more than just about order; it was about *enhancing our team's productivity* and *quality of output*.
 
 ![my image](/img/entries/design-system.png)

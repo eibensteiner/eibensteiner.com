@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: { dir: 'ltr', lang: 'en' },
     },
+    pageTransition: { name: 'page', mode: 'out-in' },
   },
   css: ['@/assets/css/styles.css'],
   modules: [

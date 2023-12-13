@@ -31,6 +31,10 @@
   @apply text-neutral-700;
 }
 
+.content > div > *:first-child {
+  @apply mt-0;
+}
+
 .content p:not(:last-child) {
   @apply mb-4;
 }
