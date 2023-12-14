@@ -8,7 +8,8 @@
                 <nuxt-link v-if="!params.author" :to="`/${content.author}`" class="text-neutral-900">{{ user.firstname
                 }}</nuxt-link>
                 <span v-else class="text-neutral-700">{{ user.firstname }}</span>
-                <span class="text-neutral-700"> shared a {{ content.type }}</span>
+                <span v-if="content.type === 'thought'" class="text-neutral-700"> shared a {{ content.type }}</span>
+                <span v-else class="text-neutral-700"> published a story</span>
 
                 <Tooltip v-if="!isPinned" :text="absoluteDate" :direction="'bottom'" class="inline">
                     <span class="ml-1.5 text-neutral-500 cursor-default">{{ relativeDate }}</span>
