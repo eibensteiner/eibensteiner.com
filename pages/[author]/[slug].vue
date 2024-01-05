@@ -31,12 +31,12 @@
   @apply text-neutral-700;
 }
 
-.content > div > *:first-child {
+.content>div>*:first-child {
   @apply mt-0;
 }
 
 .content p:not(:last-child) {
-  @apply mb-4;
+  @apply mb-4-em;
 }
 
 .content p strong,
@@ -50,25 +50,12 @@
 }
 
 .content img {
-  @apply w-full outline outline-1 -outline-offset-1 outline-neutral-700/10 rounded-md my-8 bg-neutral-100;
+  @apply w-full outline outline-1 -outline-offset-1 outline-neutral-700/10 rounded-md my-8-em bg-neutral-100;
 }
 
 .content blockquote {
-  @apply my-5 pl-4 border-l-2 border-neutral-600;
+  @apply my-5-em pl-4-em border-l-2 border-neutral-600;
 }
-
-.content ul, .content ol {
-  @apply my-6;
-}
-
-.content li {
-  @apply flex my-1;
-}
-
-.content li input[type="checkbox"] {
-  @apply mr-2 w-4 h-4 rounded appearance-none inline-flex justify-center items-center outline outline-1 outline-neutral-900/10 checked:bg-neutral-700 disabled:cursor-not-allowed checked:before:content-['✓'] text-xs text-white -outline-offset-1 my-1 flex-none;
-}
-
 </style>
 
 <script setup>
