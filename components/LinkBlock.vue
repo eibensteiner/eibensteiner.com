@@ -17,7 +17,11 @@
 
 <style>
 .c-content.c-preview {
-    @apply h-16 w-12 flex-initial bg-white rounded outline outline-1 outline-neutral-700/10 drop-shadow-sm overflow-hidden p-2 text-[0.125rem];
+    @apply h-16 w-12 flex-initial bg-white rounded outline outline-1 outline-neutral-700/10 drop-shadow-sm p-2 pb-0 text-[0.125rem];
+}
+
+.c-content.c-preview > div {
+    @apply overflow-hidden h-full;
 }
 
 .c-content.c-preview p a {
