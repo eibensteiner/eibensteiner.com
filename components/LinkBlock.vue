@@ -6,7 +6,7 @@
             <span class="text-neutral-700">{{ readingTime }}</span>
         </div>
         <div class="h-full w-24 bg-neutral-100 flex items-center justify-center relative select-none">
-            <div class="content preview">
+            <div class="c-content c-preview">
                 <ContentRenderer :value="content">
                     <ContentRendererMarkdown :value="content" />
                 </ContentRenderer>
@@ -16,23 +16,23 @@
 </template>
 
 <style>
-.content.preview {
+.c-content.c-preview {
     @apply h-16 w-12 flex-initial bg-white rounded outline outline-1 outline-neutral-700/10 drop-shadow-sm overflow-hidden p-2 text-[0.125rem];
 }
 
-.content.preview p a {
+.c-content.c-preview p a {
     @apply no-underline;
 }
 
-.content.preview blockquote {
+.c-content.c-preview blockquote {
     @apply border-l;
 }
 
-.content.preview img {
+.c-content.c-preview img {
     @apply outline-none rounded-sm;
 }
 
-.content.preview * {
+.c-content.c-preview * {
     @apply pointer-events-none;
 }
 </style>
@@ -55,5 +55,4 @@ const readingTime = computed(() => {
     const time = Math.ceil(words / wordsPerMinute);
     return `${time} min read`;
 });
-
 </script>

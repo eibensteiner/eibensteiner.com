@@ -3,7 +3,7 @@
     <Navigation :user="user" :entry="entry" />
     <main class="py-6 px-7 border-b border-neutral-100">
       <ButtonScrollToTop />
-      <div class="content">
+      <div class="c-content">
         <ContentRenderer :value="entry">
           <ContentRendererMarkdown :value="entry" />
         </ContentRenderer>
