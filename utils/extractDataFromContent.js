@@ -44,3 +44,4 @@ export const extractTextFromContent = (data) => {
 
     return textContent;
 }
+

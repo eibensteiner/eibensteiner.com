@@ -16,17 +16,32 @@ module.exports = {
     theme: {
         extend: {
             height: {
+                '4-em': '1em',
                 '5.5': '1.375rem',
                 '22': '5.5rem',
             },
             width: {
+                '4-em': '1em',
                 '5.5': '1.375rem',
+            },
+            margin: {
+                '1-em': '0.25em',
+                '2-em': '0.5em',
+                '3-em': '0.75em',
+                '4-em': '1em',
+                '5-em': '1.25em',
+                '6-em': '1.5em',
+                '8-em': '2em',
+            },
+            padding: {
+                '4-em': '1em',
             },
             maxWidth: {
                 '14': '3.5rem',
             },
             borderRadius: {
                 inherit: 'inherit',
+                'md-em': '0.375em',
             },
             fontFamily: {
                 sans: ['Inter var', 'ui-sans-serif', 'system-ui'],
