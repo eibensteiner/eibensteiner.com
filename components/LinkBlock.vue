@@ -1,6 +1,6 @@
 <template>
-    <nuxt-link :to="`/${content.author}/${content.slug}`"
-        class="group h-22 flex outline outline-1 outline-neutral-700/10 rounded-xl bg-white hover:bg-neutral-50 transition-colors drop-shadow-sm overflow-hidden">
+    <div @click="goToStory" @keydown.enter="goToStory" role="link" tabindex="0"
+        class="group h-22 flex outline outline-1 outline-neutral-700/10 rounded-xl bg-white hover:bg-neutral-50 transition-colors drop-shadow-sm overflow-hidden cursor-pointer">
         <div class="h-full flex flex-col justify-center flex-1 py-5 px-6">
             <span class="mb-0.5 text-neutral-900">{{ content.title }}</span>
             <span class="text-neutral-700">{{ readingTime }}</span>
@@ -12,7 +12,7 @@
                 </ContentRenderer>
             </div>
         </div>
-    </nuxt-link>
+    </div>
 </template>
 
 <style>
@@ -40,7 +40,13 @@
 <script setup>
 import { extractTextFromContent } from '~/utils/extractDataFromContent';
 
-const props = defineProps(['content'])
+const props = defineProps(['content']);
+const router = useRouter();
+
+const goToStory = () => {
+    const url = `/${props.content.author}/${props.content.slug}`;
+    router.push(url);
+};
 
 const readingTime = computed(() => {
     const wordsPerMinute = 200; // Average reading speed
@@ -49,4 +55,5 @@ const readingTime = computed(() => {
     const time = Math.ceil(words / wordsPerMinute);
     return `${time} min read`;
 });
+
 </script>

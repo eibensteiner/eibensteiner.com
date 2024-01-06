@@ -26,38 +26,6 @@
   </div>
 </template>
 
-<style>
-.content p {
-  @apply text-neutral-700;
-}
-
-.content>div>*:first-child {
-  @apply mt-0;
-}
-
-.content p:not(:last-child) {
-  @apply mb-4-em;
-}
-
-.content p strong,
-.content p em,
-.content blockquote p {
-  @apply text-neutral-900 font-serif italic;
-}
-
-.content p a {
-  @apply text-neutral-900 underline decoration-dashed decoration-neutral-300 underline-offset-4 decoration-1 hover:text-black hover:decoration-neutral-400 transition-colors;
-}
-
-.content img {
-  @apply w-full outline outline-1 -outline-offset-1 outline-neutral-700/10 rounded-md my-8-em bg-neutral-100;
-}
-
-.content blockquote {
-  @apply my-5-em pl-4-em border-l-2 border-neutral-600;
-}
-</style>
-
 <script setup>
 import users from '~/constants/users';
 import { getRelativeDate } from '~/utils/getReadableDate';
