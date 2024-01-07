@@ -1,9 +1,9 @@
 <template>
-    <div class="flex items-start w-full py-6 px-7 overflow-hidden bg-white">
-        <div class="h-12 my-px flex items-center justify-center mr-4">
+    <div class="flex items-start flex-1 py-6 px-7 bg-white gap-4">
+        <div class="h-12 my-px flex flex-none items-center justify-center">
             <Avatar :width="150" :height="150" :user="content.author" :isPinned="isPinned" />
         </div>
-        <div class="flex flex-col flex-1">
+        <div class="flex flex-col flex-auto min-w-0">
             <span class="leading-6 mb-0.5">
                 <nuxt-link v-if="!params.author" :to="`/${content.author}`" class="text-neutral-900">{{ user.firstname
                 }}</nuxt-link>
