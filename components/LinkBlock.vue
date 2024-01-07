@@ -1,11 +1,11 @@
 <template>
     <div @click="goToStory" @keydown.enter="goToStory" role="link" tabindex="0"
-        class="group h-22 flex outline outline-1 outline-neutral-700/10 rounded-xl bg-white hover:bg-neutral-50 transition-colors drop-shadow-sm overflow-hidden cursor-pointer">
-        <div class="h-full flex flex-col justify-center flex-1 py-5 px-6">
-            <span class="mb-0.5 text-neutral-900">{{ content.title }}</span>
-            <span class="text-neutral-700">{{ readingTime }}</span>
+        class="group h-22 flex outline outline-1 outline-neutral-700/10 rounded-xl bg-white hover:bg-neutral-50 transition-colors drop-shadow-sm cursor-pointer overflow-hidden">
+        <div class="h-full flex flex-col justify-center flex-1 py-5 px-6 overflow-hidden">
+            <span class="mb-0.5 text-neutral-900 flex-initial truncate">{{ content.title }}</span>
+            <span class="text-neutral-700 truncate">{{ readingTime }}</span>
         </div>
-        <div class="h-full w-24 bg-neutral-100 flex items-center justify-center relative select-none">
+        <div class="h-full w-24 bg-neutral-100 flex flex-none items-center justify-center relative select-none">
             <div class="c-content c-preview">
                 <ContentRenderer :value="content">
                     <ContentRendererMarkdown :value="content" />

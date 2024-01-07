@@ -1,5 +1,5 @@
 <template>
-    <nav class="w-full h-22 border-b border-neutral-100 sticky top-0 bg-white z-20 flex items-center px-7"
+    <nav class="h-22 border-b border-neutral-100 sticky top-0 bg-white z-20 flex items-center px-7"
         :class="tabs && activeTab ? 'justify-center' : ''">
         <TabGroup v-if="tabs && activeTab" :tabs="tabs" :activeTab="activeTab" @update:activeTab="changeTab" />
         <template v-else>
