@@ -4,11 +4,11 @@
         <TabGroup v-if="tabs && activeTab" :tabs="tabs" :activeTab="activeTab" @update:activeTab="changeTab" />
         <template v-else>
             <ButtonGoToParent />
-            <span v-if="user && !entry" class="ml-4 whitespace-nowrap overflow-hidden text-ellipsis flex-1">
+            <span v-if="user && !entry" class="ml-4 truncate flex-1">
                 <span class="text-neutral-900">{{ user.firstname }} {{ user.lastname }}</span>
                 <span class="ml-1.5 text-neutral-700">@{{ user.handle }}</span>
             </span>
-            <span v-if="entry" class="ml-4 text-neutral-900 whitespace-nowrap overflow-hidden text-ellipsis flex-1">{{
+            <span v-if="entry" class="ml-4 text-neutral-900 truncate flex-1">{{
                 entry.title }}</span>
         </template>
     </nav>
