@@ -5,6 +5,7 @@ createdAt: 2023-11-16
 type: story
 author: dominik
 isPinned: true
+isFeatured: true
 ---
 
 I haven't been very active on my website lately. To be precise, I even took it offline a few months ago since I didn't publish any content in a good while. But why is that?

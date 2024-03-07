@@ -19,12 +19,11 @@ const activeTab = ref('recents'); // Which tab should be initially set to be act
 
 const tabs = [
     { id: 'recents', label: 'Recents' },
-    { id: 'stories', label: 'Stories' },
-    { id: 'thoughts', label: 'Thoughts' }
+    { id: 'featured', label: 'Featured' },
 ];
 
 const { data: entries } = useAsyncData(() => {
-  return queryContent('entries').only(['author', 'body', 'createdAt', 'type', 'thought', 'slug', 'isPinned', 'title', 'image']).sort({ createdAt: -1 }).find();
+  return queryContent('entries').only(['author', 'body', 'createdAt', 'type', 'thought', 'slug', 'isPinned', 'isFeatured', 'title', 'image']).sort({ createdAt: -1 }).find();
 });
 
 // Method to set the active tab
@@ -37,10 +36,8 @@ const filteredentries = computed(() => {
   switch (activeTab.value) {
     case 'recents':
       return entries.value;
-    case 'stories':
-      return entries.value.filter(entry => entry.type === 'story');
-    case 'thoughts':
-      return entries.value.filter(entry => entry.type === 'thought');
+    case 'featured':
+      return entries.value.filter(entry => entry.isFeatured === true);
     default:
       return entries.value;
   }
@@ -56,10 +53,7 @@ function handleKeyShortcuts(event) {
       setActiveTab('recents');
       break;
     case '2':
-      setActiveTab('stories');
-      break;
-    case '3':
-      setActiveTab('thoughts');
+      setActiveTab('featured');
       break;
   }
 }

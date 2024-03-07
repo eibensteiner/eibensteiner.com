@@ -12,7 +12,8 @@
                 <span v-else class="text-neutral-700"> published a story</span>
 
                 <Tooltip v-if="!isPinned" :text="absoluteDate" :direction="'bottom'" class="inline">
-                    <span class="ml-1.5 text-neutral-500 cursor-default">{{ relativeDate }}</span>
+                    <span class="ml-1.5 text-neutral-500 cursor-default">{{ getRelativeDate(props.content.createdAt) }}</span>
+                    <!--<span class="ml-1.5 text-neutral-500 cursor-default">{{ relativeDate }}</span>-->
                 </Tooltip>
                 <span v-else class="ml-1.5 text-neutral-500">Pinned</span>
             </span>

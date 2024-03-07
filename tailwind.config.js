@@ -38,6 +38,7 @@ module.exports = {
             },
             maxWidth: {
                 '14': '3.5rem',
+                '64': '16rem',
             },
             borderRadius: {
                 inherit: 'inherit',
